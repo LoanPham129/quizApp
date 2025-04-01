@@ -1,0 +1,44 @@
+{
+  "easyquestion": [
+    {
+      "question": "Thủ đô của Việt Nam là gì?",
+      "answer1": "A. Hà Nội",
+      "answer2": "B. TP. Hồ Chí Minh",
+      "answer3": "C. Đà Nẵng",
+      "answer4": "D. Hải Phòng",
+      "correct": "A. Hà Nội"
+    },
+    {
+      "question": "Việt Nam có bao nhiêu mùa trong năm?",
+      "answer1": "A. 2",
+      "answer2": "B. 3",
+      "answer3": "C. 4",
+      "answer4": "D. 5",
+      "correct": "C. 4"
+    },
+    {
+      "question": "Loại phở nổi tiếng nhất ở Việt Nam là gì?",
+      "answer1": "A. Phở bò",
+      "answer2": "B. Phở gà",
+      "answer3": "C. Phở vịt",
+      "answer4": "D. Phở cá",
+      "correct": "A. Phở bò"
+    },
+    {
+      "question": "Chợ Bến Thành nằm ở thành phố nào?",
+      "answer1": "A. Hà Nội",
+      "answer2": "B. Huế",
+      "answer3": "C. TP. Hồ Chí Minh",
+      "answer4": "D. Đà Nẵng",
+      "correct": "C. TP. Hồ Chí Minh"
+    },
+    {
+      "question": "Biển lớn nhất ở Việt Nam là gì?",
+      "answer1": "A. Biển Đông",
+      "answer2": "B. Biển Tây",
+      "answer3": "C. Biển Bắc",
+      "answer4": "D. Biển Nam",
+      "correct": "A. Biển Đông"
+    }
+  ]
+}

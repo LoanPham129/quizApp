@@ -1,0 +1,44 @@
+{
+  "mediumquestion": [
+    {
+      "question": "Vịnh Hạ Long được UNESCO công nhận là di sản thiên nhiên thế giới vào năm nào?",
+      "answer1": "A. 1994",
+      "answer2": "B. 2000",
+      "answer3": "C. 1986",
+      "answer4": "D. 2010",
+      "correct": "A. 1994"
+    },
+    {
+      "question": "Tết Nguyên Đán ở Việt Nam thường diễn ra vào tháng mấy theo dương lịch?",
+      "answer1": "A. Tháng 12",
+      "answer2": "B. Tháng 1 hoặc tháng 2",
+      "answer3": "C. Tháng 3",
+      "answer4": "D. Tháng 11",
+      "correct": "B. Tháng 1 hoặc tháng 2"
+    },
+    {
+      "question": "Ngọn núi cao nhất Việt Nam là gì?",
+      "answer1": "A. Bạch Mã",
+      "answer2": "B. Fansipan",
+      "answer3": "C. Ngọc Linh",
+      "answer4": "D. Tam Đảo",
+      "correct": "B. Fansipan"
+    },
+    {
+      "question": "Ai là người lãnh đạo cuộc khởi nghĩa Lam Sơn chống quân Minh?",
+      "answer1": "A. Nguyễn Huệ",
+      "answer2": "B. Lý Thái Tổ",
+      "answer3": "C. Lê Lợi",
+      "answer4": "D. Trần Hưng Đạo",
+      "correct": "C. Lê Lợi"
+    },
+    {
+      "question": "Dòng sông nào chảy qua thủ đô Hà Nội?",
+      "answer1": "A. Sông Hậu",
+      "answer2": "B. Sông Hồng",
+      "answer3": "C. Sông Cửu Long",
+      "answer4": "D. Sông Đồng Nai",
+      "correct": "B. Sông Hồng"
+    }
+  ]
+}

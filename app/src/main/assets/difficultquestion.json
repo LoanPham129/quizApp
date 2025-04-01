@@ -1,0 +1,44 @@
+{
+  "difficultquestion": [
+    {
+      "question": "Ai là tác giả của bản tuyên ngôn độc lập Việt Nam năm 1945?",
+      "answer1": "A. Trường Chinh",
+      "answer2": "B. Phạm Văn Đồng",
+      "answer3": "C. Hồ Chí Minh",
+      "answer4": "D. Võ Nguyên Giáp",
+      "correct": "C. Hồ Chí Minh"
+    },
+    {
+      "question": "Kinh đô của nước Đại Việt được dời từ Hoa Lư về Thăng Long vào năm nào?",
+      "answer1": "A. 1009",
+      "answer2": "B. 1010",
+      "answer3": "C. 1011",
+      "answer4": "D. 1020",
+      "correct": "B. 1010"
+    },
+    {
+      "question": "Vị vua nào có công sáng lập ra triều đại Tây Sơn?",
+      "answer1": "A. Nguyễn Huệ",
+      "answer2": "B. Nguyễn Nhạc",
+      "answer3": "C. Nguyễn Lữ",
+      "answer4": "D. Nguyễn Ánh",
+      "correct": "B. Nguyễn Nhạc"
+    },
+    {
+      "question": "Năm 1954, chiến thắng Điện Biên Phủ của Việt Nam đã đánh bại thực dân nào?",
+      "answer1": "A. Pháp",
+      "answer2": "B. Mỹ",
+      "answer3": "C. Nhật",
+      "answer4": "D. Anh",
+      "correct": "A. Pháp"
+    },
+    {
+      "question": "Ai là người đã sáng lập ra dòng tranh dân gian Đông Hồ?",
+      "answer1": "A. Nguyễn Trãi",
+      "answer2": "B. Lương Thế Vinh",
+      "answer3": "C. Nguyễn Đăng Chế",
+      "answer4": "D. Không rõ",
+      "correct": "D. Không rõ"
+    }
+  ]
+}
