@@ -13,7 +13,7 @@
         android:layout_height="?attr/actionBarSize"
         android:id="@+id/appbar"
         android:elevation="0dp"
-        android:background="@color/backgraound">
+        android:background="@color/background">
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -54,13 +54,13 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/resultScore"
                 android:layout_marginTop="15dp"
-                android:textColor="@color/text_secondery_color"
+                android:textColor="@color/text_secondary_color"
                 android:textStyle="bold"
                 android:textSize="13sp"
                 android:text="Score"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/correctScore"
-                    android:textColor="@color/text_secondery_color"
+                    android:textColor="@color/text_secondary_color"
                     android:textStyle="bold"
                     android:textSize="13sp"
                     android:text="0"/>
@@ -132,7 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/wrongScore"
-                    android:textColor="@color/text_secondery_color"
+                    android:textColor="@color/text_secondary_color"
                     android:textStyle="bold"
                     android:textSize="13sp"
                     android:text="0"/>

@@ -77,7 +77,7 @@ public class MediumQuiz extends AppCompatActivity {
                             currentQuestion++;
                             setQuestionScreen(currentQuestion);
                             Aans.setBackgroundResource(R.color.white);
-                            Aans.setTextColor(getResources().getColor(R.color.text_secondery_color));
+                            Aans.setTextColor(getResources().getColor(R.color.text_secondary_color));
                         }
                     },500);
                 } else {
@@ -110,7 +110,7 @@ public class MediumQuiz extends AppCompatActivity {
                             currentQuestion++;
                             setQuestionScreen(currentQuestion);
                             Aans.setBackgroundResource(R.color.white);
-                            Aans.setTextColor(getResources().getColor(R.color.text_secondery_color));
+                            Aans.setTextColor(getResources().getColor(R.color.text_secondary_color));
                         }
                     },500);
                 } else {
@@ -143,7 +143,7 @@ public class MediumQuiz extends AppCompatActivity {
                             currentQuestion++;
                             setQuestionScreen(currentQuestion);
                             Bans.setBackgroundResource(R.color.white);
-                            Bans.setTextColor(getResources().getColor(R.color.text_secondery_color));
+                            Bans.setTextColor(getResources().getColor(R.color.text_secondary_color));
                         }
                     },500);
                 } else {
@@ -176,7 +176,7 @@ public class MediumQuiz extends AppCompatActivity {
                             currentQuestion++;
                             setQuestionScreen(currentQuestion);
                             Cans.setBackgroundResource(R.color.white);
-                            Cans.setTextColor(getResources().getColor(R.color.text_secondery_color));
+                            Cans.setTextColor(getResources().getColor(R.color.text_secondary_color));
                         }
                     },500);
                 } else {
@@ -209,7 +209,7 @@ public class MediumQuiz extends AppCompatActivity {
                             currentQuestion++;
                             setQuestionScreen(currentQuestion);
                             Dans.setBackgroundResource(R.color.white);
-                            Dans.setTextColor(getResources().getColor(R.color.text_secondery_color));
+                            Dans.setTextColor(getResources().getColor(R.color.text_secondary_color));
                         }
                     },500);
                 } else {

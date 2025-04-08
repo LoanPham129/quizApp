@@ -5,22 +5,22 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgraound"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
 <com.google.android.material.appbar.AppBarLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/appbarLayout"
-    app:statusBarForeground="@color/backgraound"
-    android:background="@color/backgraound"
+    app:statusBarForeground="@color/background"
+    android:background="@color/background"
     android:fitsSystemWindows="true">
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:id="@+id/toolBar"
         android:elevation="0dp"
-        android:background="@color/backgraound"
+        android:background="@color/background"
         app:subtitleTextColor="@color/text_color"
         app:title="@string/app_name"/>
 </com.google.android.material.appbar.AppBarLayout>
