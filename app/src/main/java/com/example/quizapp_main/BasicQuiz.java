@@ -9,11 +9,13 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.quizapp_main.R;
+
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.FirebaseApp;
 
@@ -41,7 +43,6 @@ public class BasicQuiz extends AppCompatActivity {
     int currentQuestion = 0;
     int correct = 0;
     int wrong = 0;
-    Intent intent;
     TextView questionNumberText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +75,11 @@ public class BasicQuiz extends AppCompatActivity {
                 if(questionItems.get(currentQuestion).getAnswer1().equals(questionItems.get(currentQuestion).getCorrect())){
                     correct++;
                     Aans.setBackgroundResource(R.color.green);
-                    Aans.setTextColor(getResources().getColor(R.color.white));
+                    Aans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
                 } else {
                     wrong++;
                     Aans.setBackgroundResource(R.color.red);
-                    Aans.setTextColor(getResources().getColor(R.color.white));
+                    Aans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
                 }
                 if (currentQuestion < questionItems.size()-1){
                     Handler handler = new Handler();
@@ -106,11 +107,11 @@ public class BasicQuiz extends AppCompatActivity {
                 if(questionItems.get(currentQuestion).getAnswer2().equals(questionItems.get(currentQuestion).getCorrect())){
                     correct++;
                     Bans.setBackgroundResource(R.color.green);
-                    Bans.setTextColor(getResources().getColor(R.color.white));
+                    Bans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
                 } else {
                     wrong++;
                     Bans.setBackgroundResource(R.color.red);
-                    Bans.setTextColor(getResources().getColor(R.color.white));
+                    Bans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
                 }
                 if (currentQuestion < questionItems.size()-1){
                     Handler handler = new Handler();
@@ -137,11 +138,11 @@ public class BasicQuiz extends AppCompatActivity {
                 if(questionItems.get(currentQuestion).getAnswer3().equals(questionItems.get(currentQuestion).getCorrect())){
                     correct++;
                     Cans.setBackgroundResource(R.color.green);
-                    Cans.setTextColor(getResources().getColor(R.color.white));
+                    Cans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
                 } else {
                     wrong++;
                     Cans.setBackgroundResource(R.color.red);
-                    Cans.setTextColor(getResources().getColor(R.color.white));
+                    Cans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
                 }
                 if (currentQuestion < questionItems.size()-1){
                     Handler handler = new Handler();
@@ -168,11 +169,11 @@ public class BasicQuiz extends AppCompatActivity {
                 if(questionItems.get(currentQuestion).getAnswer4().equals(questionItems.get(currentQuestion).getCorrect())){
                     correct++;
                     Dans.setBackgroundResource(R.color.green);
-                    Dans.setTextColor(getResources().getColor(R.color.white));
+                    Dans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
                 } else {
                     wrong++;
                     Dans.setBackgroundResource(R.color.red);
-                    Dans.setTextColor(getResources().getColor(R.color.white));
+                    Dans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
                 }
                 if (currentQuestion < questionItems.size()-1){
                     Handler handler = new Handler();
@@ -285,16 +286,16 @@ public class BasicQuiz extends AppCompatActivity {
     }
     private void resetAnswerColors() {
         Aans.setBackgroundResource(R.color.primary_color); // Thay bằng màu gốc của bạn
-        Aans.setTextColor(getResources().getColor(R.color.white));
+        Aans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
 
         Bans.setBackgroundResource(R.color.primary_color);
-        Bans.setTextColor(getResources().getColor(R.color.white));
+        Bans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
 
         Cans.setBackgroundResource(R.color.primary_color);
-        Cans.setTextColor(getResources().getColor(R.color.white));
+        Cans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
 
         Dans.setBackgroundResource(R.color.primary_color);
-        Dans.setTextColor(getResources().getColor(R.color.white));
+        Dans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
     }
 
     private void loadAllQuestion() {
