@@ -6,32 +6,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#021B3C"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:fitsSystemWindows="true">
 
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
+    <!-- Thêm LinearLayout mới cho header -->
+    <LinearLayout
+        android:id="@+id/header_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#000000"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleCentered="true"
-        app:titleTextColor="#FFFFFF" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Nút bỏ cuộc bên trái -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_give_up"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:text="Bỏ cuộc"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            android:background="@drawable/give_up_button_bg"
+            android:layout_marginStart="8dp"
+            android:padding="0dp"
+            android:letterSpacing="0.1" />
+
+        <!-- View trống để đẩy số tiền về bên phải -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <!-- Hiển thị số tiền bên phải -->
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="16dp"/>
+    </LinearLayout>
+
+    <!-- LinearLayout chứa các nút trợ giúp (đặt ở giữa) -->
+
+    <!-- Phần còn lại giữ nguyên -->
 
     <LinearLayout
         android:id="@+id/help_buttons_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="48dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/header_container">
 
         <!-- Nút 50:50 -->
         <ImageButton
@@ -65,7 +102,6 @@
             android:contentDescription="Gọi điện"
             android:scaleType="centerInside"
             android:src="@drawable/ic_phonee" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -79,11 +115,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintVertical_bias="0.374">
+        app:layout_constraintTop_toBottomOf="@id/help_buttons_container"
+        app:layout_constraintVertical_bias="0.0">
 
         <!-- Khung câu hỏi -->
-
         <TextView
             android:id="@+id/questionNumber"
             android:layout_width="wrap_content"
@@ -117,7 +152,7 @@
                 android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Các đáp án A–D -->
+        <!-- Các đáp án A-D -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/A_card"
             android:layout_width="356dp"
