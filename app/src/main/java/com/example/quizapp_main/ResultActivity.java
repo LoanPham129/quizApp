@@ -12,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.quizapp_main.R;
 import com.google.android.material.card.MaterialCardView;
 
 public class ResultActivity extends AppCompatActivity {

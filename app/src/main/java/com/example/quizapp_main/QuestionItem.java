@@ -1,7 +1,10 @@
 package com.example.quizapp_main;
 
 public class QuestionItem {
-    String  question, answer1, answer2, answer3, answer4, correct;
+    String question, answer1, answer2, answer3, answer4, correct;
+
+    public QuestionItem() {
+    }
 
     public QuestionItem(String question, String answer1, String answer2, String answer3, String answer4, String correct) {
         this.question = question;

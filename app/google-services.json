@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "559560657604",
+    "firebase_url": "https://altp-64f2a-default-rtdb.firebaseio.com",
+    "project_id": "altp-64f2a",
+    "storage_bucket": "altp-64f2a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559560657604:android:2221b8fdf0a1a514485791",
+        "android_client_info": {
+          "package_name": "com.example.quizapp_main"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmKbKd2tR79nEX2c_7js3V4TvE1978dVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

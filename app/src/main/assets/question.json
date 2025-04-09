@@ -1,0 +1,1027 @@
+{
+  "easyquestion": [
+    {
+      "question": "Thủ đô của Việt Nam là gì?",
+      "answer1": "A. Hà Nội",
+      "answer2": "B. TP. Hồ Chí Minh",
+      "answer3": "C. Đà Nẵng",
+      "answer4": "D. Hải Phòng",
+      "correct": "A. Hà Nội"
+    },
+    {
+      "question": "Trái tim con người có bao nhiêu ngăn?",
+      "answer1": "A. 1 ngăn",
+      "answer2": "B. 2 ngăn",
+      "answer3": "C. 3 ngăn",
+      "answer4": "D. 4 ngăn",
+      "correct": "D. 4 ngăn"
+    },
+    {
+      "question": "Mặt trời là một loại sao nào?",
+      "answer1": "A. Sao Mộc",
+      "answer2": "B. Sao lùn",
+      "answer3": "C. Sao sáng",
+      "answer4": "D. Sao khổng lồ",
+      "correct": "B. Sao lùn"
+    },
+    {
+      "question": "Con vật nào là loài động vật lớn nhất trên trái đất?",
+      "answer1": "A. Cá voi xanh",
+      "answer2": "B. Voi châu Phi",
+      "answer3": "C. Hươu cao cổ",
+      "answer4": "D. Gấu Bắc Cực",
+      "correct": "A. Cá voi xanh"
+    },
+    {
+      "question": "Nước chiếm bao nhiêu phần trăm bề mặt trái đất?",
+      "answer1": "A. 30%",
+      "answer2": "B. 50%",
+      "answer3": "C. 70%",
+      "answer4": "D. 90%",
+      "correct": "C. 70%"
+    },
+    {
+      "question": "Ngọn núi nào cao nhất thế giới?",
+      "answer1": "A. Everest",
+      "answer2": "B. Fuji",
+      "answer3": "C. Kilimanjaro",
+      "answer4": "D. K2",
+      "correct": "A. Everest"
+    },
+    {
+      "question": "Con sông dài nhất thế giới là gì?",
+      "answer1": "A. Sông Nile",
+      "answer2": "B. Sông Amazon",
+      "answer3": "C. Sông Mê Kông",
+      "answer4": "D. Sông Yangtze",
+      "correct": "A. Sông Nile"
+    },
+    {
+      "question": "Loài chim nào không thể bay?",
+      "answer1": "A. Đại bàng",
+      "answer2": "B. Vịt",
+      "answer3": "C. Đà điểu",
+      "answer4": "D. Hồng hạc",
+      "correct": "C. Đà điểu"
+    },
+    {
+      "question": "Hoa hồng thuộc loài thực vật nào?",
+      "answer1": "A. Hoa cúc",
+      "answer2": "B. Hoa lan",
+      "answer3": "C. Hoa hồng",
+      "answer4": "D. Hoa hướng dương",
+      "correct": "C. Hoa hồng"
+    },
+    {
+      "question": "Thành phố nào là thủ đô của Pháp?",
+      "answer1": "A. Berlin",
+      "answer2": "B. Paris",
+      "answer3": "C. Rome",
+      "answer4": "D. London",
+      "correct": "B. Paris"
+    },
+    {
+      "question": "Cái gì nặng hơn, một kg bông hay một kg sắt?",
+      "answer1": "A. Bông",
+      "answer2": "B. Sắt",
+      "answer3": "C. Cả hai nặng như nhau",
+      "answer4": "D. Không thể so sánh",
+      "correct": "C. Cả hai nặng như nhau"
+    },
+    {
+      "question": "Sự kiện nào đánh dấu sự bắt đầu của Chiến tranh Thế giới thứ hai?",
+      "answer1": "A. Cuộc tấn công vào Ba Lan",
+      "answer2": "B. Vụ tấn công Pearl Harbor",
+      "answer3": "C. Sự kiện D-Day",
+      "answer4": "D. Cuộc chiến ở Stalingrad",
+      "correct": "A. Cuộc tấn công vào Ba Lan"
+    },
+    {
+      "question": "Điện thoại di động đầu tiên được phát minh bởi ai?",
+      "answer1": "A. Steve Jobs",
+      "answer2": "B. Mark Zuckerberg",
+      "answer3": "C. Alexander Graham Bell",
+      "answer4": "D. Martin Cooper",
+      "correct": "D. Martin Cooper"
+    },
+    {
+      "question": "Nước nào có diện tích lớn nhất thế giới?",
+      "answer1": "A. Mỹ",
+      "answer2": "B. Trung Quốc",
+      "answer3": "C. Nga",
+      "answer4": "D. Canada",
+      "correct": "C. Nga"
+    },
+    {
+      "question": "Màu sắc của lá cây là do chất nào tạo nên?",
+      "answer1": "A. Chlorophyll",
+      "answer2": "B. Melanin",
+      "answer3": "C. Carotenoid",
+      "answer4": "D. Anthocyanin",
+      "correct": "A. Chlorophyll"
+    },
+    {
+      "question": "Bức tranh Mona Lisa được vẽ bởi họa sĩ nào?",
+      "answer1": "A. Pablo Picasso",
+      "answer2": "B. Leonardo da Vinci",
+      "answer3": "C. Vincent van Gogh",
+      "answer4": "D. Claude Monet",
+      "correct": "B. Leonardo da Vinci"
+    },
+
+    {
+      "question": "Vịt là loài động vật thuộc nhóm nào?",
+      "answer1": "A. Chim",
+      "answer2": "B. Lưỡng cư",
+      "answer3": "C. Động vật có vú",
+      "answer4": "D. Lưỡng cư",
+      "correct": "A. Chim"
+    },
+    {
+      "question": "Ai là người phát minh ra bóng đèn điện?",
+      "answer1": "A. Alexander Graham Bell",
+      "answer2": "B. Thomas Edison",
+      "answer3": "C. Nikola Tesla",
+      "answer4": "D. Albert Einstein",
+      "correct": "B. Thomas Edison"
+    },
+    {
+      "question": "Loài động vật nào có thể sống dưới nước và trên cạn?",
+      "answer1": "A. Cá",
+      "answer2": "B. Rùa",
+      "answer3": "C. Vịt",
+      "answer4": "D. Lừa",
+      "correct": "B. Rùa"
+    },
+    {
+      "question": "Loại quả nào được mệnh danh là 'vua của các loại quả'?",
+      "answer1": "A. Cam",
+      "answer2": "B. Dưa hấu",
+      "answer3": "C. Sầu riêng",
+      "answer4": "D. Quýt",
+      "correct": "C. Sầu riêng"
+    },
+    {
+      "question": "Người sáng lập Facebook là ai?",
+      "answer1": "A. Mark Zuckerberg",
+      "answer2": "B. Steve Jobs",
+      "answer3": "C. Bill Gates",
+      "answer4": "D. Larry Page",
+      "correct": "A. Mark Zuckerberg"
+    },
+    {
+      "question": "Loài hoa nào được coi là quốc hoa của Nhật Bản?",
+      "answer1": "A. Hoa lan",
+      "answer2": "B. Hoa cúc",
+      "answer3": "C. Hoa anh đào",
+      "answer4": "D. Hoa hồng",
+      "correct": "C. Hoa anh đào"
+    },
+    {
+      "question": "Hồ Gươm là hồ nước nổi tiếng ở thành phố nào?",
+      "answer1": "A. TP. Hồ Chí Minh",
+      "answer2": "B. Hải Phòng",
+      "answer3": "C. Hà Nội",
+      "answer4": "D. Đà Nẵng",
+      "correct": "C. Hà Nội"
+    },
+    {
+      "question": "Số nguyên tố nhỏ nhất là số nào?",
+      "answer1": "A. 1",
+      "answer2": "B. 2",
+      "answer3": "C. 3",
+      "answer4": "D. 4",
+      "correct": "B. 2"
+    },
+    {
+      "question": "Loài động vật nào có khả năng bay?",
+      "answer1": "A. Cá voi",
+      "answer2": "B. Vịt",
+      "answer3": "C. Chim",
+      "answer4": "D. Gấu",
+      "correct": "C. Chim"
+    },
+    {
+      "question": "Người đầu tiên đặt chân lên Mặt Trăng là ai?",
+      "answer1": "A. Buzz Aldrin",
+      "answer2": "B. Neil Armstrong",
+      "answer3": "C. Michael Collins",
+      "answer4": "D. John Glenn",
+      "correct": "B. Neil Armstrong"
+    },
+    {
+      "question": "Nhà văn nào đã viết tác phẩm 'Romeo và Juliet'?",
+      "answer1": "A. Mark Twain",
+      "answer2": "B. William Shakespeare",
+      "answer3": "C. Charles Dickens",
+      "answer4": "D. Jane Austen",
+      "correct": "B. William Shakespeare"
+    },
+    {
+      "question": "Công ty nào sản xuất điện thoại iPhone?",
+      "answer1": "A. Samsung",
+      "answer2": "B. Apple",
+      "answer3": "C. Nokia",
+      "answer4": "D. Huawei",
+      "correct": "B. Apple"
+    },
+    {
+      "question": "Sự kiện nào đánh dấu kết thúc Chiến tranh Thế giới thứ hai?",
+      "answer1": "A. Vụ tấn công Pearl Harbor",
+      "answer2": "B. Sự kiện D-Day",
+      "answer3": "C. Nhật Bản đầu hàng",
+      "answer4": "D. Liên Xô tấn công Berlin",
+      "correct": "C. Nhật Bản đầu hàng"
+    },
+    {
+      "question": "Ai là người phát minh ra điện thoại?",
+      "answer1": "A. Thomas Edison",
+      "answer2": "B. Nikola Tesla",
+      "answer3": "C. Alexander Graham Bell",
+      "answer4": "D. Albert Einstein",
+      "correct": "C. Alexander Graham Bell"
+    },
+    {
+      "question": "Mặt trăng quay quanh Trái đất trong bao nhiêu ngày?",
+      "answer1": "A. 14 ngày",
+      "answer2": "B. 21 ngày",
+      "answer3": "C. 28 ngày",
+      "answer4": "D. 30 ngày",
+      "correct": "C. 28 ngày"
+    },
+    {
+      "question": "Hệ mặt trời của chúng ta có bao nhiêu hành tinh?",
+      "answer1": "A. 7",
+      "answer2": "B. 8",
+      "answer3": "C. 9",
+      "answer4": "D. 10",
+      "correct": "B. 8"
+    },
+    {
+      "question": "Động vật nào sống lâu nhất trên Trái đất?",
+      "answer1": "A. Cá voi xanh",
+      "answer2": "B. Rùa Galápagos",
+      "answer3": "C. Voi",
+      "answer4": "D. Sư tử",
+      "correct": "B. Rùa Galápagos"
+    },
+    {
+      "question": "Vũ khí hạt nhân đầu tiên được thử nghiệm ở đâu?",
+      "answer1": "A. Mỹ",
+      "answer2": "B. Liên Xô",
+      "answer3": "C. Nhật Bản",
+      "answer4": "D. Ấn Độ",
+      "correct": "A. Mỹ"
+    },
+    {
+      "question": "Tàu vũ trụ đầu tiên đưa con người vào không gian là gì?",
+      "answer1": "A. Apollo 11",
+      "answer2": "B. Sputnik 1",
+      "answer3": "C. Vostok 1",
+      "answer4": "D. Challenger",
+      "correct": "C. Vostok 1"
+    },
+    {
+      "question": "Số lượng quốc gia trong Liên Hợp Quốc hiện nay là bao nhiêu?",
+      "answer1": "A. 150",
+      "answer2": "B. 193",
+      "answer3": "C. 200",
+      "answer4": "D. 250",
+      "correct": "B. 193"
+    },
+    {
+      "question": "Con vật nào là biểu tượng của Australia?",
+      "answer1": "A. Voi",
+      "answer2": "B. Koala",
+      "answer3": "C. Gấu trúc",
+      "answer4": "D. Lạc đà",
+      "correct": "B. Koala"
+    },
+    {
+      "question": "Quốc gia nào có diện tích lớn nhất châu Phi?",
+      "answer1": "A. Nigeria",
+      "answer2": "B. Ai Cập",
+      "answer3": "C. Algeria",
+      "answer4": "D. Nam Phi",
+      "correct": "C. Algeria"
+    },
+    {
+      "question": "Năm nào lần đầu tiên con người lên Mặt Trăng?",
+      "answer1": "A. 1959",
+      "answer2": "B. 1969",
+      "answer3": "C. 1979",
+      "answer4": "D. 1989",
+      "correct": "B. 1969"
+    },
+    {
+      "question": "Loài động vật nào có thể thay đổi màu sắc của da?",
+      "answer1": "A. Cá mập",
+      "answer2": "B. Bạch tuộc",
+      "answer3": "C. Voi",
+      "answer4": "D. Sư tử",
+      "correct": "B. Bạch tuộc"
+    },
+    {
+      "question": "Ai là nhà phát minh ra máy bay?",
+      "answer1": "A. Thomas Edison",
+      "answer2": "B. Wright brothers",
+      "answer3": "C. Nikola Tesla",
+      "answer4": "D. Albert Einstein",
+      "correct": "B. Wright brothers"
+    },
+    {
+      "question": "Người sáng lập Microsoft là ai?",
+      "answer1": "A. Steve Jobs",
+      "answer2": "B. Bill Gates",
+      "answer3": "C. Mark Zuckerberg",
+      "answer4": "D. Larry Page",
+      "correct": "B. Bill Gates"
+    },
+    {
+      "question": "Sông nào dài nhất ở Việt Nam?",
+      "answer1": "A. Sông Hương",
+      "answer2": "B. Sông Mê Kông",
+      "answer3": "C. Sông Cửu Long",
+      "answer4": "D. Sông Đồng Nai",
+      "correct": "B. Sông Mê Kông"
+    },
+    {
+      "question": "Thành phố nào là thủ đô của Nhật Bản?",
+      "answer1": "A. Osaka",
+      "answer2": "B. Kyoto",
+      "answer3": "C. Tokyo",
+      "answer4": "D. Nagoya",
+      "correct": "C. Tokyo"
+    },
+    {
+      "question": "Bức tranh nào được vẽ bởi Leonardo da Vinci?",
+      "answer1": "A. Đêm tối",
+      "answer2": "B. Chân dung của Mona Lisa",
+      "answer3": "C. Cánh đồng lúa",
+      "answer4": "D. Gió mùa",
+      "correct": "B. Chân dung của Mona Lisa"
+    },
+    {
+      "question": "Thủy cung lớn nhất thế giới nằm ở quốc gia nào?",
+      "answer1": "A. Mỹ",
+      "answer2": "B. Nhật Bản",
+      "answer3": "C. Dubai (UAE)",
+      "answer4": "D. Singapore",
+      "correct": "C. Dubai (UAE)"
+    },
+    {
+      "question": "Loài vật nào được gọi là 'kho báu' trong nền văn hóa của Ai Cập cổ đại?",
+      "answer1": "A. Mèo",
+      "answer2": "B. Sư tử",
+      "answer3": "C. Cá sấu",
+      "answer4": "D. Khỉ",
+      "correct": "A. Mèo"
+    },
+    {
+      "question": "Vị tổng thống đầu tiên của Mỹ là ai?",
+      "answer1": "A. George Washington",
+      "answer2": "B. Abraham Lincoln",
+      "answer3": "C. Thomas Jefferson",
+      "answer4": "D. John Adams",
+      "correct": "A. George Washington"
+    },
+    {
+      "question": "Nhật Bản có bao nhiêu quần đảo chính?",
+      "answer1": "A. 1",
+      "answer2": "B. 3",
+      "answer3": "C. 4",
+      "answer4": "D. 5",
+      "correct": "C. 4"
+    },
+    {
+      "question": "Biểu tượng nổi tiếng nào nằm ở thành phố New York?",
+      "answer1": "A. Tượng Nữ thần Tự do",
+      "answer2": "B. Tượng Chúa Cứu Thế",
+      "answer3": "C. Tháp Eiffel",
+      "answer4": "D. Đấu trường La Mã",
+      "correct": "A. Tượng Nữ thần Tự do"
+    },
+    {
+      "question": "Phát minh nào đã thay đổi hoàn toàn ngành truyền thông trong thế kỷ 20?",
+      "answer1": "A. Máy in",
+      "answer2": "B. Điện thoại di động",
+      "answer3": "C. Máy tính",
+      "answer4": "D. Máy ảnh",
+      "correct": "B. Điện thoại di động"
+    },
+    {
+      "question": "Ai là tác giả của bộ tiểu thuyết 'Harry Potter'?",
+      "answer1": "A. J.R.R. Tolkien",
+      "answer2": "B. J.K. Rowling",
+      "answer3": "C. George R.R. Martin",
+      "answer4": "D. Suzanne Collins",
+      "correct": "B. J.K. Rowling"
+    },
+    {
+      "question": "Điều gì được sử dụng để đo nhiệt độ?",
+      "answer1": "A. Manomet",
+      "answer2": "B. Thermometer",
+      "answer3": "C. Barometer",
+      "answer4": "D. Speedometer",
+      "correct": "B. Thermometer"
+    },
+    {
+      "question": "Thể thao nào được coi là vua của các môn thể thao?",
+      "answer1": "A. Bóng rổ",
+      "answer2": "B. Bóng đá",
+      "answer3": "C. Quần vợt",
+      "answer4": "D. Bóng chày",
+      "correct": "B. Bóng đá"
+    },
+    {
+      "question": "Loại quả nào có thể giúp làm trắng da và giảm nếp nhăn?",
+      "answer1": "A. Dưa hấu",
+      "answer2": "B. Cam",
+      "answer3": "C. Táo",
+      "answer4": "D. Chuối",
+      "correct": "B. Cam"
+    },
+    {
+      "question": "Vị thần nào trong thần thoại Hy Lạp là thần của chiến tranh?",
+      "answer1": "A. Apollo",
+      "answer2": "B. Ares",
+      "answer3": "C. Zeus",
+      "answer4": "D. Poseidon",
+      "correct": "B. Ares"
+    }
+  ],
+  "hardquestion": [
+    {
+      "question": "Ai là người đầu tiên đề xuất lý thuyết về 'lý thuyết đa vũ trụ'?",
+      "answer1": "A. Albert Einstein",
+      "answer2": "B. Stephen Hawking",
+      "answer3": "C. Hugh Everett",
+      "answer4": "D. Niels Bohr",
+      "correct": "C. Hugh Everett"
+    },
+    {
+      "question": "Quá trình phát triển của trái đất qua các kỷ nguyên địa chất được gọi là gì?",
+      "answer1": "A. Thời kỳ vạn vật",
+      "answer2": "B. Quá trình phân rã",
+      "answer3": "C. Địa chất học",
+      "answer4": "D. Hình thành vũ trụ",
+      "correct": "C. Địa chất học"
+    },
+    {
+      "question": "Ai là người đầu tiên phát minh ra động cơ hơi nước?",
+      "answer1": "A. James Watt",
+      "answer2": "B. Nikola Tesla",
+      "answer3": "C. Thomas Edison",
+      "answer4": "D. George Stephenson",
+      "correct": "A. James Watt"
+    },
+    {
+      "question": "Phát minh ra bảng tuần hoàn các nguyên tố hóa học là của ai?",
+      "answer1": "A. Dmitri Mendeleev",
+      "answer2": "B. Marie Curie",
+      "answer3": "C. Albert Einstein",
+      "answer4": "D. Niels Bohr",
+      "correct": "A. Dmitri Mendeleev"
+    },
+    {
+      "question": "Quốc gia nào là nơi phát triển đầu tiên của nền văn minh Lưỡng Hà?",
+      "answer1": "A. Ai Cập",
+      "answer2": "B. Mesopotamia",
+      "answer3": "C. Hy Lạp",
+      "answer4": "D. La Mã",
+      "correct": "B. Mesopotamia"
+    },
+    {
+      "question": "Phát minh ra điện từ trường là của ai?",
+      "answer1": "A. Michael Faraday",
+      "answer2": "B. Thomas Edison",
+      "answer3": "C. Nikola Tesla",
+      "answer4": "D. Albert Einstein",
+      "correct": "A. Michael Faraday"
+    },
+    {
+      "question": "Quốc gia nào là nơi phát minh ra giấy?",
+      "answer1": "A. Trung Quốc",
+      "answer2": "B. Ấn Độ",
+      "answer3": "C. Ai Cập",
+      "answer4": "D. Hy Lạp",
+      "correct": "A. Trung Quốc"
+    },
+    {
+      "question": "Ai là người phát minh ra máy phát điện xoay chiều (AC)?",
+      "answer1": "A. Thomas Edison",
+      "answer2": "B. Nikola Tesla",
+      "answer3": "C. Albert Einstein",
+      "answer4": "D. Michael Faraday",
+      "correct": "B. Nikola Tesla"
+    },
+    {
+      "question": "Công trình 'Stonehenge' có niên đại vào khoảng bao nhiêu năm trước?",
+      "answer1": "A. 1000 năm",
+      "answer2": "B. 5000 năm",
+      "answer3": "C. 2500 năm",
+      "answer4": "D. 10,000 năm",
+      "correct": "B. 5000 năm"
+    },
+    {
+      "question": "Quốc gia nào có hệ thống đế chế rộng lớn nhất trong lịch sử?",
+      "answer1": "A. Đế chế La Mã",
+      "answer2": "B. Đế chế Anh",
+      "answer3": "C. Đế chế Ottoman",
+      "answer4": "D. Đế chế Mông Cổ",
+      "correct": "D. Đế chế Mông Cổ"
+    },
+    {
+      "question": "Nhà khoa học nào là người đầu tiên chứng minh rằng trái đất quay quanh Mặt Trời?",
+      "answer1": "A. Galileo Galilei",
+      "answer2": "B. Johannes Kepler",
+      "answer3": "C. Isaac Newton",
+      "answer4": "D. Copernicus",
+      "correct": "D. Copernicus"
+    },
+    {
+      "question": "Ai là người sáng lập lý thuyết về 'chủ nghĩa hiện thực' trong nghệ thuật?",
+      "answer1": "A. Leonardo da Vinci",
+      "answer2": "B. Gustave Courbet",
+      "answer3": "C. Pablo Picasso",
+      "answer4": "D. Henri Matisse",
+      "correct": "B. Gustave Courbet"
+    },
+    {
+      "question": "Ai là người phát minh ra nguyên lý vạn vật hấp dẫn?",
+      "answer1": "A. Albert Einstein",
+      "answer2": "B. Isaac Newton",
+      "answer3": "C. Galileo Galilei",
+      "answer4": "D. Johannes Kepler",
+      "correct": "B. Isaac Newton"
+    },
+    {
+      "question": "Ai là người phát minh ra máy vi tính đầu tiên?",
+      "answer1": "A. Charles Babbage",
+      "answer2": "B. Alan Turing",
+      "answer3": "C. John von Neumann",
+      "answer4": "D. Bill Gates",
+      "correct": "A. Charles Babbage"
+    },
+    {
+      "question": "Cuộc cách mạng công nghiệp bắt đầu từ quốc gia nào?",
+      "answer1": "A. Pháp",
+      "answer2": "B. Đức",
+      "answer3": "C. Anh",
+      "answer4": "D. Mỹ",
+      "correct": "C. Anh"
+    },
+    {
+      "question": "Lý thuyết về 'tế bào' được phát triển bởi nhà khoa học nào?",
+      "answer1": "A. Robert Hooke",
+      "answer2": "B. Albert Einstein",
+      "answer3": "C. Louis Pasteur",
+      "answer4": "D. Charles Darwin",
+      "correct": "A. Robert Hooke"
+    },
+    {
+      "question": "Lý thuyết cơ học lượng tử chủ yếu được phát triển bởi ai?",
+      "answer1": "A. Max Planck",
+      "answer2": "B. Niels Bohr",
+      "answer3": "C. Albert Einstein",
+      "answer4": "D. Werner Heisenberg",
+      "correct": "A. Max Planck"
+    },
+    {
+      "question": "Quốc gia nào là nơi xảy ra vụ nổ hạt nhân đầu tiên trong lịch sử?",
+      "answer1": "A. Mỹ",
+      "answer2": "B. Nhật Bản",
+      "answer3": "C. Liên Xô",
+      "answer4": "D. Anh",
+      "correct": "A. Mỹ"
+    },
+    {
+      "question": "Cuộc chiến tranh lạnh kéo dài từ năm nào đến năm nào?",
+      "answer1": "A. 1914–1918",
+      "answer2": "B. 1939–1945",
+      "answer3": "C. 1947–1991",
+      "answer4": "D. 1950–1975",
+      "correct": "C. 1947–1991"
+    },
+    {
+      "question": "Ai là người sáng lập ra lý thuyết về chủ nghĩa cộng sản?",
+      "answer1": "A. Karl Marx",
+      "answer2": "B. Vladimir Lenin",
+      "answer3": "C. Mao Zedong",
+      "answer4": "D. Friedrich Engels",
+      "correct": "A. Karl Marx"
+    },
+    {
+      "question": "Quốc gia nào đã cử người đầu tiên đặt chân lên mặt trăng?",
+      "answer1": "A. Mỹ",
+      "answer2": "B. Liên Xô",
+      "answer3": "C. Trung Quốc",
+      "answer4": "D. Nhật Bản",
+      "correct": "A. Mỹ"
+    }
+  ],
+  "mediumquestion": [
+    {
+      "question": "Mặt trời cách Trái đất bao xa?",
+      "answer1": "A. 93 triệu dặm",
+      "answer2": "B. 100 triệu dặm",
+      "answer3": "C. 150 triệu dặm",
+      "answer4": "D. 200 triệu dặm",
+      "correct": "A. 93 triệu dặm"
+    },
+    {
+      "question": "Ai là tác giả của lý thuyết tương đối?",
+      "answer1": "A. Isaac Newton",
+      "answer2": "B. Albert Einstein",
+      "answer3": "C. Niels Bohr",
+      "answer4": "D. Stephen Hawking",
+      "correct": "B. Albert Einstein"
+    },
+    {
+      "question": "Ai là người đầu tiên đưa ra giả thuyết về tiến hóa?",
+      "answer1": "A. Gregor Mendel",
+      "answer2": "B. Charles Darwin",
+      "answer3": "C. Albert Einstein",
+      "answer4": "D. Nikola Tesla",
+      "correct": "B. Charles Darwin"
+    },
+    {
+      "question": "Sân vận động nào là lớn nhất thế giới?",
+      "answer1": "A. Maracanã",
+      "answer2": "B. Camp Nou",
+      "answer3": "C. Rungrado 1st of May",
+      "answer4": "D. Old Trafford",
+      "correct": "C. Rungrado 1st of May"
+    },
+    {
+      "question": "Quốc gia nào có tổng sản phẩm quốc nội (GDP) lớn nhất thế giới?",
+      "answer1": "A. Trung Quốc",
+      "answer2": "B. Mỹ",
+      "answer3": "C. Nhật Bản",
+      "answer4": "D. Đức",
+      "correct": "B. Mỹ"
+    },
+    {
+      "question": "Trong môn toán học, biểu thức nào gọi là số Pi?",
+      "answer1": "A. 3.14",
+      "answer2": "B. 2.71",
+      "answer3": "C. 1.62",
+      "answer4": "D. 4.56",
+      "correct": "A. 3.14"
+    },
+    {
+      "question": "Vị hoàng đế nào đã cho xây dựng Vạn Lý Trường Thành?",
+      "answer1": "A. Tần Thủy Hoàng",
+      "answer2": "B. Hán Vũ Đế",
+      "answer3": "C. Đường Thái Tông",
+      "answer4": "D. Tống Chân Tông",
+      "correct": "A. Tần Thủy Hoàng"
+    },
+    {
+      "question": "Trong ngành khoa học máy tính, thuật ngữ 'AI' là viết tắt của từ gì?",
+      "answer1": "A. Artificial Intelligence",
+      "answer2": "B. Automated Information",
+      "answer3": "C. Advanced Interface",
+      "answer4": "D. Automated Intelligence",
+      "correct": "A. Artificial Intelligence"
+    },
+    {
+      "question": "Châu nào có diện tích lớn nhất trên thế giới?",
+      "answer1": "A. Châu Á",
+      "answer2": "B. Châu Phi",
+      "answer3": "C. Châu Mỹ",
+      "answer4": "D. Châu Âu",
+      "correct": "A. Châu Á"
+    },
+    {
+      "question": "Mệnh đề nào dưới đây đúng về sự kiện ngày 9/11?",
+      "answer1": "A. Nó xảy ra vào năm 2000",
+      "answer2": "B. Đây là vụ tấn công khủng bố vào Trung tâm Thương mại Thế giới ở New York",
+      "answer3": "C. Đây là ngày chiến tranh thế giới thứ hai kết thúc",
+      "answer4": "D. Đây là ngày thành lập Liên Hợp Quốc",
+      "correct": "B. Đây là vụ tấn công khủng bố vào Trung tâm Thương mại Thế giới ở New York"
+    },
+    {
+      "question": "Sự kiện 'Lễ hội âm nhạc Woodstock' được tổ chức vào năm nào?",
+      "answer1": "A. 1969",
+      "answer2": "B. 1975",
+      "answer3": "C. 1980",
+      "answer4": "D. 1990",
+      "correct": "A. 1969"
+    },
+    {
+      "question": "Trong lịch sử y học, ai là người đầu tiên tìm ra nguyên lý tiêm vắc-xin?",
+      "answer1": "A. Louis Pasteur",
+      "answer2": "B. Edward Jenner",
+      "answer3": "C. Alexander Fleming",
+      "answer4": "D. Robert Koch",
+      "correct": "B. Edward Jenner"
+    },
+    {
+      "question": "Điều gì gây ra hiện tượng mưa axit?",
+      "answer1": "A. Sự bốc hơi của nước biển",
+      "answer2": "B. Khí thải từ các nhà máy và phương tiện giao thông",
+      "answer3": "C. Mưa lớn kéo dài",
+      "answer4": "D. Dòng chảy sông ngòi",
+      "correct": "B. Khí thải từ các nhà máy và phương tiện giao thông"
+    },
+    {
+      "question": "Tác phẩm 'Cô bé Lọ Lem' là của tác giả nào?",
+      "answer1": "A. Hans Christian Andersen",
+      "answer2": "B. Charles Perrault",
+      "answer3": "C. J.K. Rowling",
+      "answer4": "D. Brothers Grimm",
+      "correct": "B. Charles Perrault"
+    },
+    {
+      "question": "Hiện tượng 'El Niño' có ảnh hưởng chính đến vùng nào trên thế giới?",
+      "answer1": "A. Bắc Mỹ",
+      "answer2": "B. Nam Mỹ",
+      "answer3": "C. Đông Nam Á",
+      "answer4": "D. Châu Âu",
+      "correct": "B. Nam Mỹ"
+    },
+    {
+      "question": "Nhà khoa học nào là người sáng lập ra lý thuyết cơ học lượng tử?",
+      "answer1": "A. Max Planck",
+      "answer2": "B. Albert Einstein",
+      "answer3": "C. Niels Bohr",
+      "answer4": "D. Erwin Schrödinger",
+      "correct": "A. Max Planck"
+    },
+    {
+      "question": "Quốc gia nào có nền kinh tế lớn thứ ba thế giới?",
+      "answer1": "A. Trung Quốc",
+      "answer2": "B. Nhật Bản",
+      "answer3": "C. Đức",
+      "answer4": "D. Anh",
+      "correct": "B. Nhật Bản"
+    },
+    {
+      "question": "Người phụ nữ đầu tiên giành giải Nobel Hòa Bình là ai?",
+      "answer1": "A. Malala Yousafzai",
+      "answer2": "B. Marie Curie",
+      "answer3": "C. Aung San Suu Kyi",
+      "answer4": "D. Jane Addams",
+      "correct": "D. Jane Addams"
+    },
+    {
+      "question": "Quốc gia nào sản xuất cà phê nhiều nhất trên thế giới?",
+      "answer1": "A. Brazil",
+      "answer2": "B. Colombia",
+      "answer3": "C. Việt Nam",
+      "answer4": "D. Indonesia",
+      "correct": "A. Brazil"
+    },
+    {
+      "question": "Quá trình tạo ra năng lượng trong Mặt Trời là quá trình gì?",
+      "answer1": "A. Quá trình phân hạch hạt nhân",
+      "answer2": "B. Quá trình phản ứng tổng hợp hạt nhân",
+      "answer3": "C. Quá trình điện phân",
+      "answer4": "D. Quá trình phát xạ điện từ",
+      "correct": "B. Quá trình phản ứng tổng hợp hạt nhân"
+    },
+    {
+      "question": "Người sáng lập Facebook là ai?",
+      "answer1": "A. Bill Gates",
+      "answer2": "B. Steve Jobs",
+      "answer3": "C. Mark Zuckerberg",
+      "answer4": "D. Larry Page",
+      "correct": "C. Mark Zuckerberg"
+    },
+    {
+      "question": "Quốc gia nào có dân số đông nhất thế giới?",
+      "answer1": "A. Trung Quốc",
+      "answer2": "B. Ấn Độ",
+      "answer3": "C. Mỹ",
+      "answer4": "D. Indonesia",
+      "correct": "B. Ấn Độ"
+    },
+    {
+      "question": "Thành phố nào là thủ đô của Canada?",
+      "answer1": "A. Toronto",
+      "answer2": "B. Vancouver",
+      "answer3": "C. Montreal",
+      "answer4": "D. Ottawa",
+      "correct": "D. Ottawa"
+    },
+    {
+      "question": "Quốc gia nào nổi tiếng với nền văn hóa Samurai?",
+      "answer1": "A. Trung Quốc",
+      "answer2": "B. Nhật Bản",
+      "answer3": "C. Hàn Quốc",
+      "answer4": "D. Thái Lan",
+      "correct": "B. Nhật Bản"
+    },
+    {
+      "question": "Ai là tác giả của 'Đại Vương?'",
+      "answer1": "A. William Shakespeare",
+      "answer2": "B. Victor Hugo",
+      "answer3": "C. H.G. Wells",
+      "answer4": "D. George Orwell",
+      "correct": "D. George Orwell"
+    },
+    {
+      "question": "Quốc gia nào là nơi phát minh ra điện thoại?",
+      "answer1": "A. Mỹ",
+      "answer2": "B. Anh",
+      "answer3": "C. Nhật Bản",
+      "answer4": "D. Canada",
+      "correct": "A. Mỹ"
+    },
+    {
+      "question": "Phát minh ra lý thuyết dây (String Theory) là của nhà vật lý nào?",
+      "answer1": "A. Albert Einstein",
+      "answer2": "B. Stephen Hawking",
+      "answer3": "C. Michio Kaku",
+      "answer4": "D. Niels Bohr",
+      "correct": "C. Michio Kaku"
+    },
+    {
+      "question": "Quốc gia nào đứng đầu về sản xuất dầu mỏ trên thế giới?",
+      "answer1": "A. Mỹ",
+      "answer2": "B. Nga",
+      "answer3": "C. Saudi Arabia",
+      "answer4": "D. Venezuela",
+      "correct": "C. Saudi Arabia"
+    },
+    {
+      "question": "Công ty nào đầu tiên chế tạo máy tính cá nhân?",
+      "answer1": "A. IBM",
+      "answer2": "B. Apple",
+      "answer3": "C. Microsoft",
+      "answer4": "D. Hewlett-Packard",
+      "correct": "A. IBM"
+    },
+    {
+      "question": "Loài vật nào được gọi là vua của rừng xanh?",
+      "answer1": "A. Hổ",
+      "answer2": "B. Sư tử",
+      "answer3": "C. Báo đốm",
+      "answer4": "D. Voi",
+      "correct": "B. Sư tử"
+    },
+    {
+      "question": "Nhà sáng lập công ty Tesla là ai?",
+      "answer1": "A. Steve Jobs",
+      "answer2": "B. Elon Musk",
+      "answer3": "C. Mark Zuckerberg",
+      "answer4": "D. Bill Gates",
+      "correct": "B. Elon Musk"
+    },
+    {
+      "question": "Đơn vị đo lực trong hệ SI là gì?",
+      "answer1": "A. Nút",
+      "answer2": "B. Newton",
+      "answer3": "C. Pascal",
+      "answer4": "D. Joule",
+      "correct": "B. Newton"
+    },
+    {
+      "question": "Phát minh ra máy bay là của ai?",
+      "answer1": "A. Thomas Edison",
+      "answer2": "B. Wright brothers",
+      "answer3": "C. Nikola Tesla",
+      "answer4": "D. Alexander Graham Bell",
+      "correct": "B. Wright brothers"
+    },
+    {
+      "question": "Người sáng lập hãng xe Toyota là ai?",
+      "answer1": "A. Henry Ford",
+      "answer2": "B. Soichiro Honda",
+      "answer3": "C. Kiichiro Toyoda",
+      "answer4": "D. Elon Musk",
+      "correct": "C. Kiichiro Toyoda"
+    },
+    {
+      "question": "Vị tổng thống nào ký hiệp định hòa bình Versailles kết thúc Thế chiến I?",
+      "answer1": "A. Woodrow Wilson",
+      "answer2": "B. Franklin D. Roosevelt",
+      "answer3": "C. Harry S. Truman",
+      "answer4": "D. Dwight D. Eisenhower",
+      "correct": "A. Woodrow Wilson"
+    },
+    {
+      "question": "Ai là người phát minh ra thuốc kháng sinh?",
+      "answer1": "A. Alexander Fleming",
+      "answer2": "B. Louis Pasteur",
+      "answer3": "C. Robert Koch",
+      "answer4": "D. Marie Curie",
+      "correct": "A. Alexander Fleming"
+    },
+    {
+      "question": "Châu lục nào có đất liền rộng nhất?",
+      "answer1": "A. Châu Á",
+      "answer2": "B. Châu Mỹ",
+      "answer3": "C. Châu Phi",
+      "answer4": "D. Châu Âu",
+      "correct": "A. Châu Á"
+    },
+    {
+      "question": "Khi nào chiến tranh thế giới thứ hai kết thúc?",
+      "answer1": "A. 1945",
+      "answer2": "B. 1944",
+      "answer3": "C. 1950",
+      "answer4": "D. 1942",
+      "correct": "A. 1945"
+    },
+    {
+      "question": "Quốc gia nào có nền văn hóa Maya cổ đại?",
+      "answer1": "A. Peru",
+      "answer2": "B. Mexico",
+      "answer3": "C. Brazil",
+      "answer4": "D. Argentina",
+      "correct": "B. Mexico"
+    },
+    {
+      "question": "Quá trình sinh ra năng lượng trong cơ thể là gì?",
+      "answer1": "A. Hô hấp tế bào",
+      "answer2": "B. Quá trình lên men",
+      "answer3": "C. Hấp thụ ánh sáng",
+      "answer4": "D. Thủy phân",
+      "correct": "A. Hô hấp tế bào"
+    },
+    {
+      "question": "Tác phẩm '1984' được viết bởi nhà văn nào?",
+      "answer1": "A. Aldous Huxley",
+      "answer2": "B. George Orwell",
+      "answer3": "C. H.G. Wells",
+      "answer4": "D. Ernest Hemingway",
+      "correct": "B. George Orwell"
+    },
+    {
+      "question": "Địa điểm nào là nơi bắt đầu cuộc chiến tranh Việt Nam?",
+      "answer1": "A. Điện Biên Phủ",
+      "answer2": "B. Quảng Trị",
+      "answer3": "C. Hồ Chí Minh",
+      "answer4": "D. Gia Định",
+      "correct": "A. Điện Biên Phủ"
+    }
+  ],
+  "superhardquestion": [
+    {
+      "question": "Trái Đất cách Mặt Trời khoảng bao nhiêu dặm?",
+      "answer1": "A. 9,3 triệu.",
+      "answer2": "B. 39 triệu.",
+      "answer3": "C. 93 triệu.",
+      "answer4": "D. 193 triệu.",
+      "correct": "C. 93 triệu."
+    },
+    {
+      "question": "Theo Văn phòng Tham khảo Dân số, thì tổng số người từng sống trên Trái Đất từ xưa đến nay là khoảng bao nhiêu người?",
+      "answer1": "A. 50 tỷ.",
+      "answer2": "B. 100 tỷ.",
+      "answer3": "C. 1.000 tỷ.",
+      "answer4": "D. 5.000 tỷ.",
+      "correct": "B. 100 tỷ."
+    },
+    {
+      "question": "Các nhà thần kinh học tin rằng vỏ thùy giữa trán của não được kích hoạt khi bạn làm gì?",
+      "answer1": "A. Bị hoảng loạn.",
+      "answer2": "B. Ghi nhớ một cái tên.",
+      "answer3": "C. Hiểu một chuyện cười.",
+      "answer4": "D. Nghe nhạc.",
+      "correct": "C. Hiểu một chuyện cười."
+    },
+    {
+      "question": "Loài côn trùng nào đã từng làm chập một chiếc máy tính và sau đó khiến người ta bắt đầu dùng cụm từ computer bug (“rệp máy tính”, tức là lỗi phần mềm)?",
+      "answer1": "A. Sâu bướm.",
+      "answer2": "B. Gián.",
+      "answer3": "C. Ruồi.",
+      "answer4": "D. Bọ cánh cứng Nhật Bản.",
+      "correct": "B. Gián."
+    },
+    {
+      "question": "Tổng thống Mỹ nào từng xuất hiện trong loạt phim truyền hình Laugh-In?",
+      "answer1": "A. Lyndon Johnson.",
+      "answer2": "B. Richard Nixon.",
+      "answer3": "C. Jimmy Carter.",
+      "answer4": "D. Gerald Ford.",
+      "correct": "B. Richard Nixon."
+    },
+    {
+      "question": "Ai là người phát triển lý thuyết về 'thuyết dây' (String Theory), một lý thuyết mô phỏng mọi lực trong vũ trụ dưới dạng các sợi siêu nhỏ?",
+      "answer1": "A. Albert Einstein",
+      "answer2": "B. Edward Witten",
+      "answer3": "C. Michio Kaku",
+      "answer4": "D. Roger Penrose",
+      "correct": "B. Edward Witten"
+    },
+    {
+      "question": "Hiện tượng 'quantum entanglement' (rối lượng tử) lần đầu tiên được lý giải và chứng minh qua thí nghiệm của ai?",
+      "answer1": "A. Albert Einstein",
+      "answer2": "B. Niels Bohr",
+      "answer3": "C. John Bell",
+      "answer4": "D. Werner Heisenberg",
+      "correct": "C. John Bell"
+    },
+    {
+      "question": "Vào năm 1929, nhà thiên văn học Edwin Hubble đã phát hiện ra điều gì quan trọng trong vũ trụ?",
+      "answer1": "A. Vũ trụ đang co lại",
+      "answer2": "B. Vũ trụ đang mở rộng",
+      "answer3": "C. Tính chất đồng nhất của vũ trụ",
+      "answer4": "D. Cấu trúc của hố đen",
+      "correct": "B. Vũ trụ đang mở rộng"
+    }
+  ]
+}

@@ -1,23 +1,21 @@
 package com.example.quizapp_main;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.quizapp_main.R;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.firebase.FirebaseApp;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,12 +25,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class BasicQuiz extends AppCompatActivity {
 
@@ -45,6 +45,7 @@ public class BasicQuiz extends AppCompatActivity {
     TextView questionNumberText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FirebaseApp.initializeApp(this);
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_basic_quiz);
@@ -66,7 +67,6 @@ public class BasicQuiz extends AppCompatActivity {
 
         loadAllQuestion();
         Collections.shuffle(questionItems);
-        setQuestionScreen(currentQuestion);
 
         Aans.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -299,11 +299,89 @@ public class BasicQuiz extends AppCompatActivity {
 
     private void loadAllQuestion() {
         questionItems = new ArrayList<>();
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
 
-        questionItems.addAll(loadQuestionsFromJson("easyquestion.json", "easyquestion", 5));
-        questionItems.addAll(loadQuestionsFromJson("mediumquestion.json", "mediumquestion", 4));
-        questionItems.addAll(loadQuestionsFromJson("hardquestion.json", "hardquestion", 4));
-        questionItems.addAll(loadQuestionsFromJson("superhardquestion.json", "superhardquestion", 2));
+        dbRef.child("easyquestion").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                List<QuestionItem> easyList = new ArrayList<>();
+                for (DataSnapshot questionSnap : snapshot.getChildren()) {
+                    QuestionItem item = questionSnap.getValue(QuestionItem.class);
+                    easyList.add(item);
+                }
+
+                Collections.shuffle(easyList);
+                questionItems.addAll(easyList.subList(0, Math.min(4, easyList.size()))); // Lấy 5 câu
+
+                loadMediumQuestions(dbRef);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) { }
+        });
+    }
+
+    private void loadMediumQuestions(DatabaseReference dbRef) {
+        dbRef.child("mediumquestion").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                List<QuestionItem> mediumList = new ArrayList<>();
+                for (DataSnapshot questionSnap : snapshot.getChildren()) {
+                    QuestionItem item = questionSnap.getValue(QuestionItem.class);
+                    mediumList.add(item);
+                }
+
+                Collections.shuffle(mediumList);
+                questionItems.addAll(mediumList.subList(0, Math.min(5, mediumList.size()))); // Lấy 4 câu
+
+                loadHardQuestions(dbRef);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) { }
+        });
+    }
+
+    private void loadHardQuestions(DatabaseReference dbRef) {
+        dbRef.child("hardquestion").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                List<QuestionItem> hardList = new ArrayList<>();
+                for (DataSnapshot questionSnap : snapshot.getChildren()) {
+                    QuestionItem item = questionSnap.getValue(QuestionItem.class);
+                    hardList.add(item);
+                }
+
+                Collections.shuffle(hardList);
+                questionItems.addAll(hardList.subList(0, Math.min(4, hardList.size()))); // Lấy 3 câu
+
+                loadSuperHardQuestions(dbRef);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) { }
+        });
+    }
+
+    private void loadSuperHardQuestions(DatabaseReference dbRef) {
+        dbRef.child("superhardquestion").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                List<QuestionItem> superHardList = new ArrayList<>();
+                for (DataSnapshot questionSnap : snapshot.getChildren()) {
+                    QuestionItem item = questionSnap.getValue(QuestionItem.class);
+                    superHardList.add(item);
+                }
+
+                Collections.shuffle(superHardList);
+                questionItems.addAll(superHardList.subList(0, Math.min(2, superHardList.size()))); // Lấy 3 câu
+
+                setQuestionScreen(currentQuestion); // Chỉ set sau khi đủ 15 câu
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) { }
+        });
     }
 
     private List<QuestionItem> loadQuestionsFromJson(String fileName, String arrayKey, int numberOfQuestions) {
