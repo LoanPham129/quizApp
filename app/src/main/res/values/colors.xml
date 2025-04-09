@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="purple_200">#fb86fc</color>
+    <color name="purple_500">#ff6200ee</color>
+    <color name="purple_700">#ff3700b3</color>
+    <color name="teal_200">#ff03dac5</color>
+    <color name="teal_700">#ff018786</color>
+
+    <color name="green">#37cb95</color>
+    <color name="red">#de3c63</color>
+
+    <color name="backgraound">#05059E</color>
+    <color name="card_background">#FF000000</color> <!-- màu của CardView -->
+    <color name="text_color">#FFFFFF</color>   <!-- chỉnh màu chữ -->
+    <color name="text_secondery_color">#44464e</color>
+    <color name="primary_color">#0D47A1</color>
+</resources>

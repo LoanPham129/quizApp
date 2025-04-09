@@ -1,0 +1,68 @@
+{
+  "superhardquestion": [
+    {
+      "question": "Trái Đất cách Mặt Trời khoảng bao nhiêu dặm?",
+      "answer1": "A. 9,3 triệu.",
+      "answer2": "B. 39 triệu.",
+      "answer3": "C. 93 triệu.",
+      "answer4": "D. 193 triệu.",
+      "correct": "C. 93 triệu."
+    },
+    {
+      "question": "Theo Văn phòng Tham khảo Dân số, thì tổng số người từng sống trên Trái Đất từ xưa đến nay là khoảng bao nhiêu người?",
+      "answer1": "A. 50 tỷ.",
+      "answer2": "B. 100 tỷ.",
+      "answer3": "C. 1.000 tỷ.",
+      "answer4": "D. 5.000 tỷ.",
+      "correct": "B. 100 tỷ."
+    },
+    {
+      "question": "Các nhà thần kinh học tin rằng vỏ thùy giữa trán của não được kích hoạt khi bạn làm gì?",
+      "answer1": "A. Bị hoảng loạn.",
+      "answer2": "B. Ghi nhớ một cái tên.",
+      "answer3": "C. Hiểu một chuyện cười.",
+      "answer4": "D. Nghe nhạc.",
+      "correct": "C. Hiểu một chuyện cười."
+    },
+    {
+      "question": "Loài côn trùng nào đã từng làm chập một chiếc máy tính và sau đó khiến người ta bắt đầu dùng cụm từ computer bug (“rệp máy tính”, tức là lỗi phần mềm)?",
+      "answer1": "A. Sâu bướm.",
+      "answer2": "B. Gián.",
+      "answer3": "C. Ruồi.",
+      "answer4": "D. Bọ cánh cứng Nhật Bản.",
+      "correct": "B. Gián."
+    },
+    {
+      "question": "Tổng thống Mỹ nào từng xuất hiện trong loạt phim truyền hình Laugh-In?",
+      "answer1": "A. Lyndon Johnson.",
+      "answer2": "B. Richard Nixon.",
+      "answer3": "C. Jimmy Carter.",
+      "answer4": "D. Gerald Ford.",
+      "correct": "B. Richard Nixon."
+    },
+    {
+      "question": "Ai là người phát triển lý thuyết về 'thuyết dây' (String Theory), một lý thuyết mô phỏng mọi lực trong vũ trụ dưới dạng các sợi siêu nhỏ?",
+      "answer1": "A. Albert Einstein",
+      "answer2": "B. Edward Witten",
+      "answer3": "C. Michio Kaku",
+      "answer4": "D. Roger Penrose",
+      "correct": "B. Edward Witten"
+    },
+    {
+      "question": "Hiện tượng 'quantum entanglement' (rối lượng tử) lần đầu tiên được lý giải và chứng minh qua thí nghiệm của ai?",
+      "answer1": "A. Albert Einstein",
+      "answer2": "B. Niels Bohr",
+      "answer3": "C. John Bell",
+      "answer4": "D. Werner Heisenberg",
+      "correct": "C. John Bell"
+    },
+    {
+      "question": "Vào năm 1929, nhà thiên văn học Edwin Hubble đã phát hiện ra điều gì quan trọng trong vũ trụ?",
+      "answer1": "A. Vũ trụ đang co lại",
+      "answer2": "B. Vũ trụ đang mở rộng",
+      "answer3": "C. Tính chất đồng nhất của vũ trụ",
+      "answer4": "D. Cấu trúc của hố đen",
+      "correct": "B. Vũ trụ đang mở rộng"
+    }
+  ]
+}

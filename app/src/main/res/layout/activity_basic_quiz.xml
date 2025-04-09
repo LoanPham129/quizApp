@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#021B3C"
+    android:padding="16dp">
+
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleCentered="true"
+        app:titleTextColor="#FFFFFF" />
+
+    <LinearLayout
+        android:id="@+id/help_buttons_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <!-- Nút 50:50 -->
+        <ImageButton
+            android:id="@+id/help_5050"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/round_button_bg"
+            android:contentDescription="Trợ giúp 50:50"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_5050" />
+
+        <!-- Nút hỏi khán giả -->
+        <ImageButton
+            android:id="@+id/help_audience"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/round_button_bg"
+            android:contentDescription="Hỏi khán giả"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_audience" />
+
+        <!-- Nút gọi điện -->
+        <ImageButton
+            android:id="@+id/help_call"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/round_button_bg"
+            android:contentDescription="Gọi điện"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_phonee" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/quiz_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.374">
+
+        <!-- Khung câu hỏi -->
+
+        <TextView
+            android:id="@+id/questionNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="26dp"
+            android:text="Câu 1"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/questionCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:cardBackgroundColor="#1E88E5"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="2dp">
+
+            <TextView
+                android:id="@+id/quizText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="24dp"
+                android:text="Câu hỏi sẽ hiển thị ở đây?"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Các đáp án A–D -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/A_card"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#0D47A1"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="1dp">
+
+            <TextView
+                android:id="@+id/Aanswer"
+                android:layout_width="356dp"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="A. Đáp án A"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/B_card"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#0D47A1"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="1dp">
+
+            <TextView
+                android:id="@+id/Banswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="B. Đáp án B"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/C_card"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#0D47A1"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="1dp">
+
+            <TextView
+                android:id="@+id/Canswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="C. Đáp án C"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/D_card"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#0D47A1"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="1dp">
+
+            <TextView
+                android:id="@+id/Danswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="D. Đáp án D"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

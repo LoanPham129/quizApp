@@ -1,0 +1,453 @@
+{
+  "easyquestion": [
+    {
+      "question": "Thủ đô của Việt Nam là gì?",
+      "answer1": "A. Hà Nội",
+      "answer2": "B. TP. Hồ Chí Minh",
+      "answer3": "C. Đà Nẵng",
+      "answer4": "D. Hải Phòng",
+      "correct": "A. Hà Nội"
+    },
+    {
+      "question": "Trái tim con người có bao nhiêu ngăn?",
+      "answer1": "A. 1 ngăn",
+      "answer2": "B. 2 ngăn",
+      "answer3": "C. 3 ngăn",
+      "answer4": "D. 4 ngăn",
+      "correct": "D. 4 ngăn"
+    },
+    {
+      "question": "Mặt trời là một loại sao nào?",
+      "answer1": "A. Sao Mộc",
+      "answer2": "B. Sao lùn",
+      "answer3": "C. Sao sáng",
+      "answer4": "D. Sao khổng lồ",
+      "correct": "B. Sao lùn"
+    },
+    {
+      "question": "Con vật nào là loài động vật lớn nhất trên trái đất?",
+      "answer1": "A. Cá voi xanh",
+      "answer2": "B. Voi châu Phi",
+      "answer3": "C. Hươu cao cổ",
+      "answer4": "D. Gấu Bắc Cực",
+      "correct": "A. Cá voi xanh"
+    },
+    {
+      "question": "Nước chiếm bao nhiêu phần trăm bề mặt trái đất?",
+      "answer1": "A. 30%",
+      "answer2": "B. 50%",
+      "answer3": "C. 70%",
+      "answer4": "D. 90%",
+      "correct": "C. 70%"
+    },
+    {
+      "question": "Ngọn núi nào cao nhất thế giới?",
+      "answer1": "A. Everest",
+      "answer2": "B. Fuji",
+      "answer3": "C. Kilimanjaro",
+      "answer4": "D. K2",
+      "correct": "A. Everest"
+    },
+    {
+      "question": "Con sông dài nhất thế giới là gì?",
+      "answer1": "A. Sông Nile",
+      "answer2": "B. Sông Amazon",
+      "answer3": "C. Sông Mê Kông",
+      "answer4": "D. Sông Yangtze",
+      "correct": "A. Sông Nile"
+    },
+    {
+      "question": "Loài chim nào không thể bay?",
+      "answer1": "A. Đại bàng",
+      "answer2": "B. Vịt",
+      "answer3": "C. Đà điểu",
+      "answer4": "D. Hồng hạc",
+      "correct": "C. Đà điểu"
+    },
+    {
+      "question": "Hoa hồng thuộc loài thực vật nào?",
+      "answer1": "A. Hoa cúc",
+      "answer2": "B. Hoa lan",
+      "answer3": "C. Hoa hồng",
+      "answer4": "D. Hoa hướng dương",
+      "correct": "C. Hoa hồng"
+    },
+    {
+      "question": "Thành phố nào là thủ đô của Pháp?",
+      "answer1": "A. Berlin",
+      "answer2": "B. Paris",
+      "answer3": "C. Rome",
+      "answer4": "D. London",
+      "correct": "B. Paris"
+    },
+    {
+      "question": "Cái gì nặng hơn, một kg bông hay một kg sắt?",
+      "answer1": "A. Bông",
+      "answer2": "B. Sắt",
+      "answer3": "C. Cả hai nặng như nhau",
+      "answer4": "D. Không thể so sánh",
+      "correct": "C. Cả hai nặng như nhau"
+    },
+    {
+      "question": "Sự kiện nào đánh dấu sự bắt đầu của Chiến tranh Thế giới thứ hai?",
+      "answer1": "A. Cuộc tấn công vào Ba Lan",
+      "answer2": "B. Vụ tấn công Pearl Harbor",
+      "answer3": "C. Sự kiện D-Day",
+      "answer4": "D. Cuộc chiến ở Stalingrad",
+      "correct": "A. Cuộc tấn công vào Ba Lan"
+    },
+    {
+      "question": "Điện thoại di động đầu tiên được phát minh bởi ai?",
+      "answer1": "A. Steve Jobs",
+      "answer2": "B. Mark Zuckerberg",
+      "answer3": "C. Alexander Graham Bell",
+      "answer4": "D. Martin Cooper",
+      "correct": "D. Martin Cooper"
+    },
+    {
+      "question": "Nước nào có diện tích lớn nhất thế giới?",
+      "answer1": "A. Mỹ",
+      "answer2": "B. Trung Quốc",
+      "answer3": "C. Nga",
+      "answer4": "D. Canada",
+      "correct": "C. Nga"
+    },
+    {
+      "question": "Màu sắc của lá cây là do chất nào tạo nên?",
+      "answer1": "A. Chlorophyll",
+      "answer2": "B. Melanin",
+      "answer3": "C. Carotenoid",
+      "answer4": "D. Anthocyanin",
+      "correct": "A. Chlorophyll"
+    },
+    {
+      "question": "Bức tranh Mona Lisa được vẽ bởi họa sĩ nào?",
+      "answer1": "A. Pablo Picasso",
+      "answer2": "B. Leonardo da Vinci",
+      "answer3": "C. Vincent van Gogh",
+      "answer4": "D. Claude Monet",
+      "correct": "B. Leonardo da Vinci"
+    },
+
+    {
+      "question": "Vịt là loài động vật thuộc nhóm nào?",
+      "answer1": "A. Chim",
+      "answer2": "B. Lưỡng cư",
+      "answer3": "C. Động vật có vú",
+      "answer4": "D. Lưỡng cư",
+      "correct": "A. Chim"
+    },
+    {
+      "question": "Ai là người phát minh ra bóng đèn điện?",
+      "answer1": "A. Alexander Graham Bell",
+      "answer2": "B. Thomas Edison",
+      "answer3": "C. Nikola Tesla",
+      "answer4": "D. Albert Einstein",
+      "correct": "B. Thomas Edison"
+    },
+    {
+      "question": "Loài động vật nào có thể sống dưới nước và trên cạn?",
+      "answer1": "A. Cá",
+      "answer2": "B. Rùa",
+      "answer3": "C. Vịt",
+      "answer4": "D. Lừa",
+      "correct": "B. Rùa"
+    },
+    {
+      "question": "Loại quả nào được mệnh danh là 'vua của các loại quả'?",
+      "answer1": "A. Cam",
+      "answer2": "B. Dưa hấu",
+      "answer3": "C. Sầu riêng",
+      "answer4": "D. Quýt",
+      "correct": "C. Sầu riêng"
+    },
+    {
+      "question": "Người sáng lập Facebook là ai?",
+      "answer1": "A. Mark Zuckerberg",
+      "answer2": "B. Steve Jobs",
+      "answer3": "C. Bill Gates",
+      "answer4": "D. Larry Page",
+      "correct": "A. Mark Zuckerberg"
+    },
+    {
+      "question": "Loài hoa nào được coi là quốc hoa của Nhật Bản?",
+      "answer1": "A. Hoa lan",
+      "answer2": "B. Hoa cúc",
+      "answer3": "C. Hoa anh đào",
+      "answer4": "D. Hoa hồng",
+      "correct": "C. Hoa anh đào"
+    },
+    {
+      "question": "Hồ Gươm là hồ nước nổi tiếng ở thành phố nào?",
+      "answer1": "A. TP. Hồ Chí Minh",
+      "answer2": "B. Hải Phòng",
+      "answer3": "C. Hà Nội",
+      "answer4": "D. Đà Nẵng",
+      "correct": "C. Hà Nội"
+    },
+    {
+      "question": "Số nguyên tố nhỏ nhất là số nào?",
+      "answer1": "A. 1",
+      "answer2": "B. 2",
+      "answer3": "C. 3",
+      "answer4": "D. 4",
+      "correct": "B. 2"
+    },
+    {
+      "question": "Loài động vật nào có khả năng bay?",
+      "answer1": "A. Cá voi",
+      "answer2": "B. Vịt",
+      "answer3": "C. Chim",
+      "answer4": "D. Gấu",
+      "correct": "C. Chim"
+    },
+    {
+      "question": "Người đầu tiên đặt chân lên Mặt Trăng là ai?",
+      "answer1": "A. Buzz Aldrin",
+      "answer2": "B. Neil Armstrong",
+      "answer3": "C. Michael Collins",
+      "answer4": "D. John Glenn",
+      "correct": "B. Neil Armstrong"
+    },
+    {
+      "question": "Nhà văn nào đã viết tác phẩm 'Romeo và Juliet'?",
+      "answer1": "A. Mark Twain",
+      "answer2": "B. William Shakespeare",
+      "answer3": "C. Charles Dickens",
+      "answer4": "D. Jane Austen",
+      "correct": "B. William Shakespeare"
+    },
+    {
+      "question": "Công ty nào sản xuất điện thoại iPhone?",
+      "answer1": "A. Samsung",
+      "answer2": "B. Apple",
+      "answer3": "C. Nokia",
+      "answer4": "D. Huawei",
+      "correct": "B. Apple"
+    },
+    {
+      "question": "Sự kiện nào đánh dấu kết thúc Chiến tranh Thế giới thứ hai?",
+      "answer1": "A. Vụ tấn công Pearl Harbor",
+      "answer2": "B. Sự kiện D-Day",
+      "answer3": "C. Nhật Bản đầu hàng",
+      "answer4": "D. Liên Xô tấn công Berlin",
+      "correct": "C. Nhật Bản đầu hàng"
+    },
+    {
+      "question": "Ai là người phát minh ra điện thoại?",
+      "answer1": "A. Thomas Edison",
+      "answer2": "B. Nikola Tesla",
+      "answer3": "C. Alexander Graham Bell",
+      "answer4": "D. Albert Einstein",
+      "correct": "C. Alexander Graham Bell"
+    },
+    {
+      "question": "Mặt trăng quay quanh Trái đất trong bao nhiêu ngày?",
+      "answer1": "A. 14 ngày",
+      "answer2": "B. 21 ngày",
+      "answer3": "C. 28 ngày",
+      "answer4": "D. 30 ngày",
+      "correct": "C. 28 ngày"
+    },
+    {
+      "question": "Hệ mặt trời của chúng ta có bao nhiêu hành tinh?",
+      "answer1": "A. 7",
+      "answer2": "B. 8",
+      "answer3": "C. 9",
+      "answer4": "D. 10",
+      "correct": "B. 8"
+    },
+    {
+      "question": "Động vật nào sống lâu nhất trên Trái đất?",
+      "answer1": "A. Cá voi xanh",
+      "answer2": "B. Rùa Galápagos",
+      "answer3": "C. Voi",
+      "answer4": "D. Sư tử",
+      "correct": "B. Rùa Galápagos"
+    },
+    {
+      "question": "Vũ khí hạt nhân đầu tiên được thử nghiệm ở đâu?",
+      "answer1": "A. Mỹ",
+      "answer2": "B. Liên Xô",
+      "answer3": "C. Nhật Bản",
+      "answer4": "D. Ấn Độ",
+      "correct": "A. Mỹ"
+    },
+    {
+      "question": "Tàu vũ trụ đầu tiên đưa con người vào không gian là gì?",
+      "answer1": "A. Apollo 11",
+      "answer2": "B. Sputnik 1",
+      "answer3": "C. Vostok 1",
+      "answer4": "D. Challenger",
+      "correct": "C. Vostok 1"
+    },
+    {
+      "question": "Số lượng quốc gia trong Liên Hợp Quốc hiện nay là bao nhiêu?",
+      "answer1": "A. 150",
+      "answer2": "B. 193",
+      "answer3": "C. 200",
+      "answer4": "D. 250",
+      "correct": "B. 193"
+    },
+    {
+      "question": "Con vật nào là biểu tượng của Australia?",
+      "answer1": "A. Voi",
+      "answer2": "B. Koala",
+      "answer3": "C. Gấu trúc",
+      "answer4": "D. Lạc đà",
+      "correct": "B. Koala"
+    },
+    {
+      "question": "Quốc gia nào có diện tích lớn nhất châu Phi?",
+      "answer1": "A. Nigeria",
+      "answer2": "B. Ai Cập",
+      "answer3": "C. Algeria",
+      "answer4": "D. Nam Phi",
+      "correct": "C. Algeria"
+    },
+    {
+      "question": "Năm nào lần đầu tiên con người lên Mặt Trăng?",
+      "answer1": "A. 1959",
+      "answer2": "B. 1969",
+      "answer3": "C. 1979",
+      "answer4": "D. 1989",
+      "correct": "B. 1969"
+    },
+    {
+      "question": "Loài động vật nào có thể thay đổi màu sắc của da?",
+      "answer1": "A. Cá mập",
+      "answer2": "B. Bạch tuộc",
+      "answer3": "C. Voi",
+      "answer4": "D. Sư tử",
+      "correct": "B. Bạch tuộc"
+    },
+    {
+      "question": "Ai là nhà phát minh ra máy bay?",
+      "answer1": "A. Thomas Edison",
+      "answer2": "B. Wright brothers",
+      "answer3": "C. Nikola Tesla",
+      "answer4": "D. Albert Einstein",
+      "correct": "B. Wright brothers"
+    },
+    {
+      "question": "Người sáng lập Microsoft là ai?",
+      "answer1": "A. Steve Jobs",
+      "answer2": "B. Bill Gates",
+      "answer3": "C. Mark Zuckerberg",
+      "answer4": "D. Larry Page",
+      "correct": "B. Bill Gates"
+    },
+    {
+      "question": "Sông nào dài nhất ở Việt Nam?",
+      "answer1": "A. Sông Hương",
+      "answer2": "B. Sông Mê Kông",
+      "answer3": "C. Sông Cửu Long",
+      "answer4": "D. Sông Đồng Nai",
+      "correct": "B. Sông Mê Kông"
+    },
+    {
+      "question": "Thành phố nào là thủ đô của Nhật Bản?",
+      "answer1": "A. Osaka",
+      "answer2": "B. Kyoto",
+      "answer3": "C. Tokyo",
+      "answer4": "D. Nagoya",
+      "correct": "C. Tokyo"
+    },
+    {
+      "question": "Bức tranh nào được vẽ bởi Leonardo da Vinci?",
+      "answer1": "A. Đêm tối",
+      "answer2": "B. Chân dung của Mona Lisa",
+      "answer3": "C. Cánh đồng lúa",
+      "answer4": "D. Gió mùa",
+      "correct": "B. Chân dung của Mona Lisa"
+    },
+    {
+      "question": "Thủy cung lớn nhất thế giới nằm ở quốc gia nào?",
+      "answer1": "A. Mỹ",
+      "answer2": "B. Nhật Bản",
+      "answer3": "C. Dubai (UAE)",
+      "answer4": "D. Singapore",
+      "correct": "C. Dubai (UAE)"
+    },
+    {
+      "question": "Loài vật nào được gọi là 'kho báu' trong nền văn hóa của Ai Cập cổ đại?",
+      "answer1": "A. Mèo",
+      "answer2": "B. Sư tử",
+      "answer3": "C. Cá sấu",
+      "answer4": "D. Khỉ",
+      "correct": "A. Mèo"
+    },
+    {
+      "question": "Vị tổng thống đầu tiên của Mỹ là ai?",
+      "answer1": "A. George Washington",
+      "answer2": "B. Abraham Lincoln",
+      "answer3": "C. Thomas Jefferson",
+      "answer4": "D. John Adams",
+      "correct": "A. George Washington"
+    },
+    {
+      "question": "Nhật Bản có bao nhiêu quần đảo chính?",
+      "answer1": "A. 1",
+      "answer2": "B. 3",
+      "answer3": "C. 4",
+      "answer4": "D. 5",
+      "correct": "C. 4"
+    },
+    {
+      "question": "Biểu tượng nổi tiếng nào nằm ở thành phố New York?",
+      "answer1": "A. Tượng Nữ thần Tự do",
+      "answer2": "B. Tượng Chúa Cứu Thế",
+      "answer3": "C. Tháp Eiffel",
+      "answer4": "D. Đấu trường La Mã",
+      "correct": "A. Tượng Nữ thần Tự do"
+    },
+    {
+      "question": "Phát minh nào đã thay đổi hoàn toàn ngành truyền thông trong thế kỷ 20?",
+      "answer1": "A. Máy in",
+      "answer2": "B. Điện thoại di động",
+      "answer3": "C. Máy tính",
+      "answer4": "D. Máy ảnh",
+      "correct": "B. Điện thoại di động"
+    },
+    {
+      "question": "Ai là tác giả của bộ tiểu thuyết 'Harry Potter'?",
+      "answer1": "A. J.R.R. Tolkien",
+      "answer2": "B. J.K. Rowling",
+      "answer3": "C. George R.R. Martin",
+      "answer4": "D. Suzanne Collins",
+      "correct": "B. J.K. Rowling"
+    },
+    {
+      "question": "Điều gì được sử dụng để đo nhiệt độ?",
+      "answer1": "A. Manomet",
+      "answer2": "B. Thermometer",
+      "answer3": "C. Barometer",
+      "answer4": "D. Speedometer",
+      "correct": "B. Thermometer"
+    },
+    {
+      "question": "Thể thao nào được coi là vua của các môn thể thao?",
+      "answer1": "A. Bóng rổ",
+      "answer2": "B. Bóng đá",
+      "answer3": "C. Quần vợt",
+      "answer4": "D. Bóng chày",
+      "correct": "B. Bóng đá"
+    },
+    {
+      "question": "Loại quả nào có thể giúp làm trắng da và giảm nếp nhăn?",
+      "answer1": "A. Dưa hấu",
+      "answer2": "B. Cam",
+      "answer3": "C. Táo",
+      "answer4": "D. Chuối",
+      "correct": "B. Cam"
+    },
+    {
+      "question": "Vị thần nào trong thần thoại Hy Lạp là thần của chiến tranh?",
+      "answer1": "A. Apollo",
+      "answer2": "B. Ares",
+      "answer3": "C. Zeus",
+      "answer4": "D. Poseidon",
+      "correct": "B. Ares"
+    }
+  ]
+}
