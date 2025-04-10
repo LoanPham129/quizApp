@@ -51,7 +51,7 @@
                         android:layout_height="wrap_content"
                         android:text="Chơi"
                         android:textColor="@color/text_color"
-                        android:textSize="17sp"
+                        android:textSize="22sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:text="Thoát"
                         android:textColor="@color/text_color"
-                        android:textSize="17sp"
+                        android:textSize="22sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
