@@ -22,12 +22,14 @@ public class SplashActivity extends AppCompatActivity {
             @Override public void run(){
                 try{
                     synchronized (this){
-                        wait(5000);
+                        wait(3000);
                     }
                 } catch (InterruptedException ignored){
 
                 } finally {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish(); // Đảm bảo splash không quay lại nữa
                 }
             }
         };

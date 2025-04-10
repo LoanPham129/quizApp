@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -45,13 +46,14 @@ import android.graphics.drawable.ColorDrawable;
 
 public class BasicQuiz extends AppCompatActivity {
 
-    TextView quiztext, Aans, Bans, Cans, Dans;
+    TextView quiztext, Aans, Bans, Cans, Dans, questionNumberText;
     List<QuestionItem> questionItems;
+    ProgressBar loadingSpinner;
+    View quizLayout, helpButtons, headerLayout;
     int currentQuestion = 0;
     int correct = 0;
     int wrong = 0;
     int totalMoney = 0;
-    TextView questionNumberText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FirebaseApp.initializeApp(this);
@@ -68,6 +70,16 @@ public class BasicQuiz extends AppCompatActivity {
 
         TextView tvMoney = findViewById(R.id.currentMoney);
         tvMoney.setOnClickListener(v -> showRewardTable());
+
+        loadingSpinner = findViewById(R.id.loading_spinner);
+        quizLayout = findViewById(R.id.quiz_container);
+        helpButtons = findViewById(R.id.help_buttons_container);
+        headerLayout = findViewById(R.id.header_container);
+
+        // Ẩn nội dung quiz ban đầu
+        quizLayout.setVisibility(View.GONE);
+        helpButtons.setVisibility(View.GONE);
+        headerLayout.setVisibility(View.GONE);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -291,6 +303,15 @@ public class BasicQuiz extends AppCompatActivity {
         } else {
             wrong++;
             v.setBackgroundResource(R.color.red);
+            new Handler().postDelayed(() -> {
+                Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
+                intent.putExtra("correct", correct);
+                intent.putExtra("wrong", wrong);
+                intent.putExtra("totalMoney", totalMoney);
+                startActivity(intent);
+                finish();
+            }, 500);
+            return; // Ngắt không cho tiếp tục sang câu sau
         }
 
         // Kiểm tra xem v có phải là Button không và nếu có thì cast nó
@@ -352,7 +373,14 @@ public class BasicQuiz extends AppCompatActivity {
                 Collections.shuffle(superHardList);
                 questionItems.addAll(superHardList.subList(0, Math.min(2, superHardList.size()))); // Lấy 3 câu
 
-                setQuestionScreen(currentQuestion); // Chỉ set sau khi đủ 15 câu
+//                setQuestionScreen(currentQuestion); // Chỉ set sau khi đủ 15 câu
+
+                // Hiện quiz sau khi load xong
+                loadingSpinner.setVisibility(View.GONE);
+                quizLayout.setVisibility(View.VISIBLE);
+                helpButtons.setVisibility(View.VISIBLE);
+                headerLayout.setVisibility(View.VISIBLE);
+                setQuestionScreen(currentQuestion);
             }
 
             @Override
@@ -434,6 +462,9 @@ public class BasicQuiz extends AppCompatActivity {
     private void showRewardTable() {
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.reward_table);
+
+        // Mốc an toàn
+        int[] safeMilestones = {4, 9};
 
         // Lấy dữ liệu tiền thưởng (có thể thay bằng dữ liệu thực)
         int[][] rewards = {
