@@ -1,10 +1,17 @@
 package com.example.quizapp_main;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -34,6 +41,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import android.graphics.drawable.ColorDrawable;
 
 public class BasicQuiz extends AppCompatActivity {
 
@@ -42,6 +50,7 @@ public class BasicQuiz extends AppCompatActivity {
     int currentQuestion = 0;
     int correct = 0;
     int wrong = 0;
+    int totalMoney = 0;
     TextView questionNumberText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +66,8 @@ public class BasicQuiz extends AppCompatActivity {
         Cans = findViewById(R.id.Canswer);
         Dans = findViewById(R.id.Danswer);
 
+        TextView tvMoney = findViewById(R.id.currentMoney);
+        tvMoney.setOnClickListener(v -> showRewardTable());
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -68,130 +79,36 @@ public class BasicQuiz extends AppCompatActivity {
         loadAllQuestion();
         Collections.shuffle(questionItems);
 
+
+
         Aans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(questionItems.get(currentQuestion).getAnswer1().equals(questionItems.get(currentQuestion).getCorrect())){
-                    correct++;
-                    Aans.setBackgroundResource(R.color.green);
-                    Aans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-                } else {
-                    wrong++;
-                    Aans.setBackgroundResource(R.color.red);
-                    Aans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-                }
-                if (currentQuestion < questionItems.size()-1){
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            currentQuestion++;
-                            setQuestionScreen(currentQuestion); // Đã gọi resetAnswerColors() bên trong
-                        }
-                    },500);
-                } else {
-                    Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
-                    intent.putExtra("correct",correct);
-                    intent.putExtra("wrong", wrong);
-                    startActivity(intent);
-                    finish();
-                }
+                handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer1());
             }
         });
-
 
         Bans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(questionItems.get(currentQuestion).getAnswer2().equals(questionItems.get(currentQuestion).getCorrect())){
-                    correct++;
-                    Bans.setBackgroundResource(R.color.green);
-                    Bans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-                } else {
-                    wrong++;
-                    Bans.setBackgroundResource(R.color.red);
-                    Bans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-                }
-                if (currentQuestion < questionItems.size()-1){
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            currentQuestion++;
-                            setQuestionScreen(currentQuestion);
-                        }
-                    },500);
-                } else {
-                    Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
-                    intent.putExtra("correct",correct);
-                    intent.putExtra("wrong", wrong);
-                    startActivity(intent);
-                    finish();
-                }
+                handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer2());
             }
         });
 
         Cans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(questionItems.get(currentQuestion).getAnswer3().equals(questionItems.get(currentQuestion).getCorrect())){
-                    correct++;
-                    Cans.setBackgroundResource(R.color.green);
-                    Cans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-                } else {
-                    wrong++;
-                    Cans.setBackgroundResource(R.color.red);
-                    Cans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-                }
-                if (currentQuestion < questionItems.size()-1){
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            currentQuestion++;
-                            setQuestionScreen(currentQuestion);
-                        }
-                    },500);
-                } else {
-                    Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
-                    intent.putExtra("correct",correct);
-                    intent.putExtra("wrong", wrong);
-                    startActivity(intent);
-                    finish();
-                }
+                handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer3());
             }
         });
 
         Dans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(questionItems.get(currentQuestion).getAnswer4().equals(questionItems.get(currentQuestion).getCorrect())){
-                    correct++;
-                    Dans.setBackgroundResource(R.color.green);
-                    Dans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-                } else {
-                    wrong++;
-                    Dans.setBackgroundResource(R.color.red);
-                    Dans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-                }
-                if (currentQuestion < questionItems.size()-1){
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            currentQuestion++;
-                            setQuestionScreen(currentQuestion);
-                        }
-                    },500);
-                } else {
-                    Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
-                    intent.putExtra("correct",correct);
-                    intent.putExtra("wrong", wrong);
-                    startActivity(intent);
-                    finish();
-                }
+                handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer4());
             }
         });
+
         findViewById(R.id.help_5050).setOnClickListener(v -> {
             v.setVisibility(View.INVISIBLE);
             v.setEnabled(false);
@@ -342,6 +259,49 @@ public class BasicQuiz extends AppCompatActivity {
         });
     }
 
+    private void handleAnswerClick(View v, String selectedAnswer) {
+        // Kiểm tra câu trả lời đúng hay sai
+        if (selectedAnswer.equals(questionItems.get(currentQuestion).getCorrect())) {
+            correct++;
+            v.setBackgroundResource(R.color.green);
+
+            // Cộng số tiền thưởng vào tổng số tiền
+            int reward = getRewardForQuestion(currentQuestion);  // Lấy số tiền thưởng cho câu hỏi hiện tại
+            totalMoney = reward;
+
+            // Cập nhật TextView hiển thị số tiền
+            TextView tvMoney = findViewById(R.id.currentMoney);
+            tvMoney.setText(formatMoney(totalMoney));  // Hiển thị số tiền đã cộng dồn
+        } else {
+            wrong++;
+            v.setBackgroundResource(R.color.red);
+        }
+
+        // Kiểm tra xem v có phải là Button không và nếu có thì cast nó
+        if (v instanceof Button) {
+            Button button = (Button) v;  // Cast v thành Button
+            button.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));  // Đặt màu chữ
+        }
+
+        if (currentQuestion < questionItems.size() - 1) {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    currentQuestion++;
+                    setQuestionScreen(currentQuestion); // Đã gọi resetAnswerColors() bên trong
+                }
+            }, 500);
+        } else {
+            Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
+            intent.putExtra("correct", correct);
+            intent.putExtra("wrong", wrong);
+            intent.putExtra("totalMoney", totalMoney);  // Chuyển tổng số tiền qua ResultActivity
+            startActivity(intent);
+            finish();
+        }
+    }
+
     private void loadHardQuestions(DatabaseReference dbRef) {
         dbRef.child("hardquestion").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -382,59 +342,6 @@ public class BasicQuiz extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError error) { }
         });
-    }
-
-    private List<QuestionItem> loadQuestionsFromJson(String fileName, String arrayKey, int numberOfQuestions) {
-        List<QuestionItem> list = new ArrayList<>();
-        String json = loadJsonFromAsset(fileName);
-        try {
-            JSONObject jsonObject = new JSONObject(json);
-            JSONArray questions = jsonObject.getJSONArray(arrayKey);
-
-            List<Integer> indices = new ArrayList<>();
-            for (int i = 0; i < questions.length(); i++) {
-                indices.add(i);
-            }
-
-            Collections.shuffle(indices);
-
-            for (int i = 0; i < numberOfQuestions && i < indices.size(); i++) {
-                JSONObject question = questions.getJSONObject(indices.get(i));
-
-                String questionString = question.getString("question");
-                String answer1String = question.getString("answer1");
-                String answer2String = question.getString("answer2");
-                String answer3String = question.getString("answer3");
-                String answer4String = question.getString("answer4");
-                String correctString = question.getString("correct");
-
-                list.add(new QuestionItem(
-                        questionString,
-                        answer1String,
-                        answer2String,
-                        answer3String,
-                        answer4String,
-                        correctString
-                ));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-    private String loadJsonFromAsset(String s){
-        String json = "";
-        try {
-            InputStream inputStream =  getAssets().open(s);
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-        return json;
     }
 
     private void showAudienceDialog(String correctAnswer) {
@@ -504,6 +411,120 @@ public class BasicQuiz extends AppCompatActivity {
 
         return votes;
     }
+
+
+//    phần thưởng
+// Trong Activity/Fragment của bạn
+    private void showRewardTable() {
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.reward_table);
+
+        // Lấy dữ liệu tiền thưởng (có thể thay bằng dữ liệu thực)
+        int[][] rewards = {
+                {15, 150000000},
+                {14, 85000000},
+                {13, 60000000},
+                {12, 40000000},
+                {11, 30000000},
+                {10, 22000000},
+                {9, 14000000},
+                {8, 10000000},
+                {7, 6000000},
+                {6, 3000000},
+                {5, 2000000},
+                {4, 1000000},
+                {3, 600000},
+                {2, 400000},
+                {1, 200000}
+        };
+
+    TableLayout table = dialog.findViewById(R.id.reward_table);
+
+    // Thêm tiêu đề
+        TableRow headerRow = new TableRow(this);
+        addTableCell(headerRow, "Câu hỏi", true);
+        addTableCell(headerRow, "Tiền thưởng", true);
+        table.addView(headerRow);
+
+        // Thêm các hàng dữ liệu
+        for (int i = 0; i < rewards.length; i++) {
+            TableRow row = new TableRow(this);
+
+            // Highlight dòng hiện tại (currentQuestion + 1 vì index bắt đầu từ 0)
+            if ((rewards.length - i) == currentQuestion + 1) {
+                row.setBackgroundColor(Color.parseColor("#FFD700")); // Màu vàng
+            } else if (i % 2 == 0) {
+                row.setBackgroundColor(Color.parseColor("#F5F5F5")); // Màu xám nhạt
+            } else {
+                row.setBackgroundColor(Color.WHITE);
+            }
+
+            addTableCell(row, String.valueOf(rewards[i][0]), false);
+            addTableCell(row, formatMoney(rewards[i][1]), false);
+            table.addView(row);
+        }
+
+        dialog.show();
+    }
+
+    private void addTableCell(TableRow row, String text, boolean isHeader) {
+        TextView textView = new TextView(this);
+        textView.setText(text);
+        textView.setGravity(Gravity.CENTER);
+        textView.setPadding(8, 12, 8, 12);
+
+        if (isHeader) {
+            textView.setTextColor(Color.WHITE);
+            textView.setTypeface(null, Typeface.BOLD);
+        } else {
+            // Nếu là dòng được highlight, đổi màu chữ cho dễ đọc
+            if (row.getBackground() != null && row.getBackground().getConstantState() != null
+                    && row.getBackground().getConstantState().equals(
+                    new ColorDrawable(Color.parseColor("#FFD700")).getConstantState())) {
+                textView.setTextColor(Color.BLACK); // Chữ đen trên nền vàng
+            } else {
+                textView.setTextColor(Color.BLACK); // Chữ đen trên nền trắng/xám
+            }
+        }
+
+        row.addView(textView, new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+    }
+
+    private String formatMoney(int amount) {
+        return String.format("%,d", amount) + " VND";
+    }
+    private int getRewardForQuestion(int questionIndex) {
+        int[][] rewards = {
+                {15, 150000000},
+                {14, 85000000},
+                {13, 60000000},
+                {12, 40000000},
+                {11, 30000000},
+                {10, 22000000},
+                {9, 14000000},
+                {8, 10000000},
+                {7, 6000000},
+                {6, 3000000},
+                {5, 2000000},
+                {4, 1000000},
+                {3, 600000},
+                {2, 400000},
+                {1, 200000}
+        };
+
+        // Tính toán chỉ số trong bảng phần thưởng (15 câu hỏi, index bắt đầu từ 0)
+        int rewardIndex = 15 - (questionIndex + 1); // Cộng 1 vì questionIndex bắt đầu từ 0
+
+        // Đảm bảo không vượt quá số câu hỏi có phần thưởng
+        if (rewardIndex >= 0 && rewardIndex < rewards.length) {
+            return rewards[rewardIndex][1]; // Trả về số tiền thưởng cho câu hỏi
+        }
+        return 0; // Nếu không có phần thưởng, trả về 0
+    }
+
+
+
+
 
     @Override
     public void onBackPressed() {

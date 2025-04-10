@@ -44,65 +44,21 @@
 
         <!-- Hiển thị số tiền bên phải -->
         <TextView
-            android:id="@+id/tv_money"
+            android:id="@+id/currentMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="50"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="16dp"/>
+            android:text="0 VNĐ"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp" />
     </LinearLayout>
 
     <!-- LinearLayout chứa các nút trợ giúp (đặt ở giữa) -->
 
     <!-- Phần còn lại giữ nguyên -->
 
-    <LinearLayout
-        android:id="@+id/help_buttons_container"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_container">
-
-        <!-- Nút 50:50 -->
-        <ImageButton
-            android:id="@+id/help_5050"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="8dp"
-            android:background="@drawable/round_button_bg"
-            android:contentDescription="Trợ giúp 50:50"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_5050" />
-
-        <!-- Nút hỏi khán giả -->
-        <ImageButton
-            android:id="@+id/help_audience"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="8dp"
-            android:background="@drawable/round_button_bg"
-            android:contentDescription="Hỏi khán giả"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_audience" />
-
-        <!-- Nút gọi điện -->
-        <ImageButton
-            android:id="@+id/help_call"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="8dp"
-            android:background="@drawable/round_button_bg"
-            android:contentDescription="Gọi điện"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_phonee" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/quiz_container"
@@ -115,8 +71,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/help_buttons_container"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.266">
 
         <!-- Khung câu hỏi -->
         <TextView
@@ -236,6 +192,52 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/help_buttons_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quiz_container">
+
+        <!-- Nút 50:50 -->
+        <ImageButton
+            android:id="@+id/help_5050"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/round_button_bg"
+            android:contentDescription="Trợ giúp 50:50"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_5050" />
+
+        <!-- Nút hỏi khán giả -->
+        <ImageButton
+            android:id="@+id/help_audience"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/round_button_bg"
+            android:contentDescription="Hỏi khán giả"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_audience" />
+
+        <!-- Nút gọi điện -->
+        <ImageButton
+            android:id="@+id/help_call"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/round_button_bg"
+            android:contentDescription="Gọi điện"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_phonee" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

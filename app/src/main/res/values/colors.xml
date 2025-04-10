@@ -17,4 +17,5 @@
     <color name="text_color">#FFFFFF</color>   <!-- chỉnh màu chữ -->
     <color name="text_secondery_color">#44464e</color>
     <color name="primary_color">#0D47A1</color>
+    <color name="defaultRow">#0E49B5</color>
 </resources>
