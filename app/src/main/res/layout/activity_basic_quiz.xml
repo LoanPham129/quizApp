@@ -72,7 +72,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.266">
+        app:layout_constraintVertical_bias="0.355">
 
         <!-- Khung câu hỏi -->
         <TextView
@@ -88,7 +88,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/questionCard"
-            android:layout_width="match_parent"
+            android:layout_width="352dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             app:cardBackgroundColor="#1E88E5"
@@ -98,7 +98,7 @@
 
             <TextView
                 android:id="@+id/quizText"
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="24dp"
@@ -111,7 +111,7 @@
         <!-- Các đáp án A-D -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/A_card"
-            android:layout_width="356dp"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:cardBackgroundColor="#0D47A1"
@@ -121,7 +121,7 @@
 
             <TextView
                 android:id="@+id/Aanswer"
-                android:layout_width="356dp"
+                android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:text="A. Đáp án A"
@@ -132,7 +132,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/B_card"
-            android:layout_width="356dp"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:cardBackgroundColor="#0D47A1"
@@ -153,7 +153,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/C_card"
-            android:layout_width="356dp"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:cardBackgroundColor="#0D47A1"
@@ -174,7 +174,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/D_card"
-            android:layout_width="356dp"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:cardBackgroundColor="#0D47A1"

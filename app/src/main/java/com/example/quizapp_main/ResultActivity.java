@@ -17,64 +17,57 @@ import com.google.android.material.card.MaterialCardView;
 
 public class ResultActivity extends AppCompatActivity {
 
-    MaterialCardView home;
-    TextView correct, wrong, resultInfo, resultscore;
+    MaterialCardView home, playAgain;  // Added playAgain button
+    TextView resultInfo;
     ImageView resultImage;
+    TextView resultMoney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_result);
+//        số tiền
+        resultMoney = findViewById(R.id.resultMoney);
+        int totalMoney = getIntent().getIntExtra("totalMoney", 0);
 
+        // Initialize views
         home = findViewById(R.id.returnHome);
-        correct = findViewById(R.id.correctScore);
-        wrong = findViewById(R.id.wrongScore);
+        playAgain = findViewById(R.id.playAgain);  // New button
         resultInfo = findViewById(R.id.resultInfo);
-        resultscore = findViewById(R.id.resultScore);
         resultImage = findViewById(R.id.resultImage);
 
-        int Correct = getIntent().getIntExtra("correct", 0);
-        int Wrong = getIntent().getIntExtra("wrong", 0);
-        int Score = Correct * 10;
+        // Get data from intent
 
-        correct.setText(String.valueOf(Correct)); // Correct number of answers
-        wrong.setText(String.valueOf(Wrong)); // Wrong number of answers
-        resultscore.setText(String.valueOf(Score));
-
-        if (Correct >= 0 && Correct <=2){
-            resultInfo.setText("You have to take the test again");
-            resultImage.setImageResource(R.drawable.ic_sad);
-        } else if (Correct >= 3 && Correct <=5) {
-            resultInfo.setText("You have to try a little more");
-            resultImage.setImageResource(R.drawable.ic_neutral);
-        }else if (Correct >= 6 && Correct <=8) {
-            resultInfo.setText("You are pretty good");
-            resultImage.setImageResource(R.drawable.ic_smile);
-        }else{
-            resultInfo.setText("You are very good congratulations");
-            resultImage.setImageResource(R.drawable.ic_smile);
-        }
-
-        home.setOnClickListener( new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ResultActivity.this, MainActivity.class));
-                finish();
-            }
+        // Home button - go to main screen
+        home.setOnClickListener(v -> {
+            startActivity(new Intent(ResultActivity.this, MainActivity.class));
+            finish();
         });
 
+        // Play Again button - restart the quiz
+        playAgain.setOnClickListener(v -> {
+            startActivity(new Intent(ResultActivity.this, BasicQuiz.class));  // Assuming QuizActivity is your quiz activity
+            finish();  // Close the current activity
+        });
 
+        // Adjust layout for system bars (for edge-to-edge design)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        resultMoney.setText("Số tiền bạn đã thắng: " + formatMoney(totalMoney));
+
     }
+    private String formatMoney(int money) {
+        return String.format("%,d VND", money);  // Ví dụ: 200,000 VND
+    }
+
     @Override
-    public  void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(ResultActivity.this, MainActivity.class));
+        startActivity(new Intent(ResultActivity.this, MainActivity.class));  // Go back to the main activity
         finish();
     }
 }

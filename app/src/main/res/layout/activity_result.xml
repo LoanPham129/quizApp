@@ -15,11 +15,12 @@
         android:padding="24dp"
         tools:context=".ResultActivity">
 
+        <!-- AppBar (Header) -->
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#000000"
-            android:elevation="0dp">
+            android:elevation="4dp">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:layout_width="match_parent"
@@ -29,11 +30,12 @@
                 app:titleTextColor="#FFFFFF" />
         </com.google.android.material.appbar.AppBarLayout>
 
+        <!-- Result Info Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardBackgroundColor="#1E88E5"
+            app:cardBackgroundColor="#05059E"
             app:cardCornerRadius="16dp"
             app:strokeWidth="0dp">
 
@@ -46,8 +48,8 @@
 
                 <ImageView
                     android:id="@+id/resultImage"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:src="@drawable/ic_smile" />
 
                 <TextView
@@ -55,30 +57,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Bạn đã hoàn thành trò chơi!"
+                    android:text="Chúc mừng bạn!"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
+                <!-- Hiển thị số tiền -->
                 <TextView
-                    android:id="@+id/resultScore"
+                    android:id="@+id/resultMoney"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Tổng điểm: 10/15"
-                    android:textColor="#BBDEFB"
-                    android:textSize="14sp" />
+                    android:layout_marginTop="16dp"
+                    android:text="Số tiền bạn đã thắng: 0 VND"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Nút chơi lại và thoát -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:orientation="horizontal"
+            android:layout_marginTop="32dp"
             android:weightSum="2">
 
+            <!-- Nút chơi lại -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/playAgain"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -93,32 +99,19 @@
                     android:gravity="center"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_correct" />
-
                     <TextView
-                        android:layout_marginTop="8dp"
-                        android:text="Đúng"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Chơi lại"
                         android:textColor="#FFFFFF"
-                        android:textStyle="bold"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/correctScore"
-                        android:layout_marginTop="4dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10"
-                        android:textColor="#C8E6C9"
-                        android:textSize="14sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Nút thoát -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/returnHome"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -133,56 +126,16 @@
                     android:gravity="center"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_wrong" />
-
                     <TextView
-                        android:layout_marginTop="8dp"
-                        android:text="Sai"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Thoát"
                         android:textColor="#FFFFFF"
-                        android:textStyle="bold"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/wrongScore"
-                        android:layout_marginTop="4dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5"
-                        android:textColor="#FFCDD2"
-                        android:textSize="14sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/returnHome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:cardBackgroundColor="#512DA8"
-            app:cardCornerRadius="16dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/returnText"
-                    android:text="Về màn hình chính"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:textSize="17sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 </ScrollView>
