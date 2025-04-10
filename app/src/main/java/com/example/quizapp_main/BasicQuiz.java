@@ -175,7 +175,7 @@ public class BasicQuiz extends AppCompatActivity {
             v.setEnabled(false);
 
             // Số điện thoại giả định để gọi
-            String phoneNumber = "";
+            String phoneNumber = "0123456789";
 
             // Tạo Intent mở ứng dụng gọi điện
             Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -276,76 +276,49 @@ public class BasicQuiz extends AppCompatActivity {
     }
 
     private void handleAnswerClick(View v, String selectedAnswer) {
-        // Nếu trả lời đúng
+        // Kiểm tra câu trả lời đúng hay sai
         if (selectedAnswer.equals(questionItems.get(currentQuestion).getCorrect())) {
             correct++;
             v.setBackgroundResource(R.color.green);
 
-            // Cộng số tiền thưởng
+            // Cộng số tiền thưởng vào tổng số tiền
             int reward = getRewardForQuestion(currentQuestion);
             totalMoney = reward;
 
-            // Cập nhật TextView
+            // Cập nhật TextView hiển thị số tiền
             TextView tvMoney = findViewById(R.id.currentMoney);
             tvMoney.setText(formatMoney(totalMoney));
 
-            // Đổi màu chữ nếu là Button
-            if (v instanceof Button) {
-                ((Button) v).setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-            }
-
-            // Chuyển sang câu tiếp theo sau delay
             if (currentQuestion < questionItems.size() - 1) {
-                new Handler().postDelayed(() -> {
+                Handler handler = new Handler();
+                handler.postDelayed(() -> {
                     currentQuestion++;
                     setQuestionScreen(currentQuestion);
                 }, 500);
             } else {
-                // Đã hết câu hỏi, hiện kết quả
-                new Handler().postDelayed(() -> showResult(), 1000);
+                // Nếu là câu cuối cùng và trả lời đúng
+                new Handler().postDelayed(() -> {
+                    Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
+                    intent.putExtra("correct", correct);
+                    intent.putExtra("wrong", wrong);
+                    intent.putExtra("totalMoney", totalMoney);
+                    startActivity(intent);
+                    finish();
+                }, 500);
             }
-
         } else {
-            // Trả lời sai
             wrong++;
             v.setBackgroundResource(R.color.red);
 
-            if (v instanceof Button) {
-                ((Button) v).setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-            }
-
-            // Delay: hiện đáp án đúng, rồi hiện màn hình kết thúc
-            new Handler().postDelayed(() -> {
-                showCorrectAnswer();
-
-                new Handler().postDelayed(() -> showResult(), 500);
-            }, 1500);
+            // Nếu trả lời sai, hiển thị đáp án đúng rồi kết thúc
+            showCorrectAnswerAndFinish();
         }
-    }
 
-    private void showCorrectAnswer() {
-        String correctAnswer = questionItems.get(currentQuestion).getCorrect();
-
-        // Hiển thị đáp án đúng bằng cách thay đổi màu nền của đáp án đúng
-        if (correctAnswer.equals(questionItems.get(currentQuestion).getAnswer1())) {
-            Aans.setBackgroundResource(R.color.green);  // Màu xanh cho đáp án đúng
-        } else if (correctAnswer.equals(questionItems.get(currentQuestion).getAnswer2())) {
-            Bans.setBackgroundResource(R.color.green);
-        } else if (correctAnswer.equals(questionItems.get(currentQuestion).getAnswer3())) {
-            Cans.setBackgroundResource(R.color.green);
-        } else {
-            Dans.setBackgroundResource(R.color.green);
+        // Kiểm tra xem v có phải là Button không và nếu có thì cast nó
+        if (v instanceof Button) {
+            Button button = (Button) v;
+            button.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
         }
-    }
-
-    private void showResult() {
-        // Dừng trò chơi, hiển thị kết quả
-        Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
-        intent.putExtra("correct", correct);
-        intent.putExtra("wrong", wrong);
-        intent.putExtra("totalMoney", totalMoney);  // Chuyển tổng số tiền qua ResultActivity
-        startActivity(intent);
-        finish();  // Kết thúc trò chơi
     }
 
     private void loadHardQuestions(DatabaseReference dbRef) {
@@ -567,6 +540,33 @@ public class BasicQuiz extends AppCompatActivity {
         }
         return 0; // Nếu không có phần thưởng, trả về 0
     }
+
+    private void showCorrectAnswerAndFinish() {
+        // Tìm đáp án đúng và highlight màu xanh
+        String correctAnswer = questionItems.get(currentQuestion).getCorrect();
+
+        if (correctAnswer.equals(Aans.getText().toString())) {
+            Aans.setBackgroundResource(R.color.green);
+        } else if (correctAnswer.equals(Bans.getText().toString())) {
+            Bans.setBackgroundResource(R.color.green);
+        } else if (correctAnswer.equals(Cans.getText().toString())) {
+            Cans.setBackgroundResource(R.color.green);
+        } else {
+            Dans.setBackgroundResource(R.color.green);
+        }
+
+        // Đợi 1 giây rồi chuyển sang màn hình kết quả
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
+            intent.putExtra("correct", correct);
+            intent.putExtra("wrong", wrong);
+            intent.putExtra("totalMoney", totalMoney);
+            startActivity(intent);
+            finish();
+        }, 1000);
+    }
+
+
 
 
 
