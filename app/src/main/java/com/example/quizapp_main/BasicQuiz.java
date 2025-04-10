@@ -74,8 +74,24 @@ public class BasicQuiz extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
+        //thoát game
+        Button quitButton = findViewById(R.id.btn_give_up);
+        quitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Tạo một hộp thoại xác nhận khi nhấn nút bỏ cuộc
+                new MaterialAlertDialogBuilder(BasicQuiz.this)
+                        .setTitle("Xác nhận")
+                        .setMessage("Bạn có chắc chắn muốn bỏ cuộc không?")
+                        .setNegativeButton("Hủy", (dialog, which) -> dialog.dismiss())
+                        .setPositiveButton("Đồng ý", (dialog, which) -> {
+                            // Quay lại màn hình chính
+                            startActivity(new Intent(BasicQuiz.this, MainActivity.class));
+                            finish();
+                        })
+                        .show();
+            }
+        });
         loadAllQuestion();
         Collections.shuffle(questionItems);
 
