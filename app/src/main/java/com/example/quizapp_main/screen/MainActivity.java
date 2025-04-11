@@ -19,9 +19,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.quizapp_main.model.AppConfig;
 import com.example.quizapp_main.R;
+import com.example.quizapp_main.model.Player;
 import com.example.quizapp_main.model.PrefHelper;
+import com.example.quizapp_main.model.RankingAdapter;
 import com.example.quizapp_main.model.SoundManager;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -33,7 +38,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView userIcon;
     DatabaseReference dbRef;
     ImageView volumeToggle;
-    MaterialCardView easyCard, exitCard;
+    private boolean isRankingVisible = false;
+    MaterialCardView easyCard, exitCard,rankingCard;
     SoundManager soundManager;
 
     @Override
@@ -49,9 +57,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         userIcon = findViewById(R.id.userIcon);
+        RecyclerView rankingRecyclerView = findViewById(R.id.rankingRecyclerView);
+        rankingRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         EdgeToEdge.enable(this);
         userGreeting = findViewById(R.id.userGreeting);
+        rankingCard = findViewById(R.id.rankingCard); // Đảm bảo bạn đã thêm ID cho "Bảng Xếp Hạng"
 
         if (PrefHelper.isLoggedIn(this)) {
             String username = PrefHelper.getUsername(this);
@@ -94,7 +105,43 @@ public class MainActivity extends AppCompatActivity {
         exitCard.setOnClickListener(v -> {
             showExitDialog();
         });
+        rankingCard.setOnClickListener(v -> {
+            if (!isRankingVisible) {
+                // Hiển thị bảng xếp hạng và tải dữ liệu
+                dbRef.orderByChild("questionNumber")
+                        .limitToFirst(5)
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                List<Player> topPlayers = new ArrayList<>();
+                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                    Player player = snapshot.getValue(Player.class);
+                                    topPlayers.add(player);
+                                }
 
+                                RankingAdapter adapter = new RankingAdapter(topPlayers);
+                                rankingRecyclerView.setAdapter(adapter);
+                                rankingRecyclerView.setVisibility(View.VISIBLE);
+                                rankingRecyclerView.animate().alpha(1f).setDuration(300); // Hiệu ứng hiện
+                                isRankingVisible = true;
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Toast.makeText(MainActivity.this, "Lỗi khi tải dữ liệu", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            } else {
+                // Ẩn bảng xếp hạng với hiệu ứng
+                rankingRecyclerView.animate()
+                        .alpha(0f)
+                        .setDuration(300)
+                        .withEndAction(() -> {
+                            rankingRecyclerView.setVisibility(View.GONE);
+                            isRankingVisible = false; // Chỉ cập nhật trạng thái SAU khi ẩn xong
+                        });
+            }
+        });
         TextView helpText = findViewById(R.id.helpText);
 
         helpText.setOnClickListener(v -> {
@@ -122,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 showExitDialog(); // gọi hàm hiển thị dialog xác nhận
             }
         });
+
     }
 
     private void showLogoutDialog() {
@@ -224,6 +272,7 @@ public class MainActivity extends AppCompatActivity {
         Map<String, Object> userData = new HashMap<>();
         userData.put("name", name);
         userData.put("money", 0);
+        userData.put("questionNumber", 0); // Thêm điểm cao nhất
         userData.put("createdAt", ServerValue.TIMESTAMP);
         userData.put("name_lowercase", name.toLowerCase()); // Thêm trường phụ để search không phân biệt hoa thường
 

@@ -21,6 +21,9 @@
         <activity
             android:name=".screen.MainActivity"
             android:exported="false" />
+        <activity android:name="screen.RankingActivity">
+            <!-- Bạn có thể thêm các thuộc tính như theme, intent-filter tùy vào yêu cầu -->
+        </activity>
         <activity
             android:name=".screen.SplashActivity"
             android:exported="true">

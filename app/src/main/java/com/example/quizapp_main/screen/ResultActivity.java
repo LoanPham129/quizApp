@@ -7,16 +7,12 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.quizapp_main.model.AppConfig;
 import com.example.quizapp_main.R;
 import com.example.quizapp_main.model.PrefHelper;
 import com.example.quizapp_main.model.SoundManager;
 import com.google.android.material.card.MaterialCardView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
@@ -42,38 +38,32 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         EdgeToEdge.enable(this);
-//        số tiền
+
         resultMoney = findViewById(R.id.resultMoney);
         int totalMoney = getIntent().getIntExtra("totalMoney", 0);
+        int totalQuestion = getIntent().getIntExtra("totalQuestion", 0);
+
         PrefHelper.updateMoney(this, totalMoney);
+        PrefHelper.updateQuestionNumber(this, totalQuestion);
 
-        saveToFirebase(totalMoney);
+        // Gọi hàm saveToFirebase để cập nhật số tiền và số câu trả lời đúng vào Firebase
+        saveToFirebase(totalMoney, totalQuestion);
 
-        // Initialize views
         home = findViewById(R.id.returnHome);
-        playAgain = findViewById(R.id.playAgain);  // New button
-        resultInfo = findViewById(R.id.resultInfo);
+        playAgain = findViewById(R.id.playAgain);
 
-
-        // Home button - go to main screen
         home.setOnClickListener(v -> {
             soundManager.stop();
             startActivity(new Intent(ResultActivity.this, MainActivity.class));
             finish();
         });
 
-        // Play Again button - restart the quiz
         playAgain.setOnClickListener(v -> {
             soundManager.stop();
             startActivity(new Intent(ResultActivity.this, BasicQuiz.class));  // Assuming QuizActivity is your quiz activity
-            finish();  // Close the current activity
+            finish();
         });
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
         resultMoney.setText("Số tiền bạn đã thắng: " + formatMoney(totalMoney));
 
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
@@ -83,9 +73,8 @@ public class ResultActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
-    private void saveToFirebase(int newMoney) {
+    private void saveToFirebase(int newMoney, int newQuestionNumber) {
         String userId = PrefHelper.getUserId(this);
         if (userId == null) {
             Log.e("Firebase", "Chưa có userId");
@@ -99,17 +88,32 @@ public class ResultActivity extends AppCompatActivity {
                 Integer currentMoney = snapshot.child("money").getValue(Integer.class);
                 if (currentMoney == null) currentMoney = 0;
 
-                if (newMoney > currentMoney) {
-                    Map<String, Object> updates = new HashMap<>();
-                    updates.put("money", newMoney);
-                    updates.put("lastUpdate", ServerValue.TIMESTAMP);
+                Integer currentQuestionNumber = snapshot.child("questionNumber").getValue(Integer.class);
+                if (currentQuestionNumber == null) currentQuestionNumber = 0;
 
-                    userRef.updateChildren(updates)
-                            .addOnSuccessListener(aVoid -> Log.d("Firebase", "Đã cập nhật tiền mới: " + newMoney))
-                            .addOnFailureListener(e -> Log.e("Firebase", "Lỗi khi lưu tiền mới: " + e.getMessage()));
-                } else {
-                    Log.d("Firebase", "Không lưu: tiền mới thấp hơn hoặc bằng hiện tại (" + currentMoney + ")");
+                Map<String, Object> updates = new HashMap<>();
+
+                // Cập nhật số tiền nếu mới lớn hơn
+                if (newMoney > currentMoney) {
+                    updates.put("money", newMoney);
                 }
+
+                // Cập nhật số câu hỏi nếu mới lớn hơn
+                if (newQuestionNumber > currentQuestionNumber) {
+                    updates.put("questionNumber", newQuestionNumber);
+                }
+
+                updates.put("lastUpdate", ServerValue.TIMESTAMP);  // Thêm thời gian cập nhật
+
+                // Nếu có bất kỳ giá trị nào thay đổi, thực hiện cập nhật
+                if (!updates.isEmpty()) {
+                    userRef.updateChildren(updates)
+                            .addOnSuccessListener(aVoid -> Log.d("Firebase", "Đã cập nhật thành công"))
+                            .addOnFailureListener(e -> Log.e("Firebase", "Lỗi khi lưu: " + e.getMessage()));
+                } else {
+                    Log.d("Firebase", "Không thay đổi gì.");
+                }
+
             } else {
                 Log.e("Firebase", "Không tìm thấy user snapshot");
             }

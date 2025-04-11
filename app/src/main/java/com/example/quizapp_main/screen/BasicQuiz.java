@@ -2,11 +2,13 @@ package com.example.quizapp_main.screen;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.Insets;
@@ -24,6 +27,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.quizapp_main.model.AppConfig;
+import com.example.quizapp_main.model.PrefHelper;
 import com.example.quizapp_main.model.QuestionItem;
 import com.example.quizapp_main.R;
 import com.example.quizapp_main.model.SoundManager;
@@ -47,6 +51,8 @@ public class BasicQuiz extends AppCompatActivity {
     List<QuestionItem> questionItems;
     int currentQuestion = 0;
     int totalMoney = 0;
+    int totalQuestion = 0;
+
     int[][] rewards = {
             {15, 150000000},
             {14, 85000000},
@@ -76,6 +82,7 @@ public class BasicQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_basic_quiz);
+        SharedPreferences prefs = getSharedPreferences("quiz_prefs", MODE_PRIVATE);
 
         setupBackPressHandler();
         initViews();
@@ -123,6 +130,7 @@ public class BasicQuiz extends AppCompatActivity {
 
             // Nếu đúng
             if (selectedAnswer.equals(correctAnswer)) {
+
                 if (AppConfig.isVolumeOn) {
                     soundManager.play(this, R.raw.dung, false);
                 }
@@ -131,13 +139,14 @@ public class BasicQuiz extends AppCompatActivity {
 
                 int reward = getRewardForQuestion(currentQuestion);
                 totalMoney = reward;
-
+                totalQuestion++;
                 TextView tvMoney = findViewById(R.id.currentMoney);
                 tvMoney.setText(formatMoney(totalMoney));
 
                 if (currentQuestion < questionItems.size() - 1) {
                     new Handler().postDelayed(() -> {
                         currentQuestion++;
+                        int correctAnswers = currentQuestion + 1; // vì index bắt đầu từ 0
                         setQuestionScreen(currentQuestion);
                     }, 2000);
                 } else {
@@ -155,13 +164,16 @@ public class BasicQuiz extends AppCompatActivity {
                 v.setBackgroundResource(R.color.red); // Đáp án chọn sai
 
                 // Cập nhật số tiền theo mốc an toàn đã vượt qua
-                totalMoney = getSafeMoney(currentQuestion - 1); // -1 vì vừa trả lời sai
+                totalMoney = getSafeMoney(currentQuestion - 1);
 
                 TextView tvMoney = findViewById(R.id.currentMoney);
                 tvMoney.setText(formatMoney(totalMoney));
 
-                showCorrectAnswerAndFinish(); // sẽ delay thêm 1s ở trong hàm này
+                // ✅ Lưu high score nếu cần (ví dụ bạn đang ở câu 4 → đã trả lời đúng 3 câu)
+                int correctAnswers = currentQuestion; // Vì currentQuestion là index câu hiện tại (vừa trả lời sai)
+                showCorrectAnswerAndFinish();
             }
+
         }, 3000);
     }
     private void showCorrectAnswerAndFinish() {
@@ -182,6 +194,7 @@ public class BasicQuiz extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
             intent.putExtra("totalMoney", totalMoney);
+            intent.putExtra("totalQuestion", totalQuestion);
             startActivity(intent);
             finish();
         }, 3000);
@@ -238,9 +251,9 @@ public class BasicQuiz extends AppCompatActivity {
                     .setMessage("Bạn có chắc chắn muốn bỏ cuộc không?")
                     .setNegativeButton("Hủy", (dialog, which) -> dialog.dismiss())
                     .setPositiveButton("Đồng ý", (dialog, which) -> {
-                        totalMoney = getSafeMoney(currentQuestion - 1);
                         Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
                         intent.putExtra("totalMoney", totalMoney);
+                        intent.putExtra("totalQuestion", totalQuestion);
                         startActivity(intent);
                         finish();
                     })
@@ -555,6 +568,30 @@ public class BasicQuiz extends AppCompatActivity {
 
         findViewById(R.id.help_call).setEnabled(enabled);
         findViewById(R.id.help_call).setAlpha(enabled ? 1.0f : 0.5f);
+    }
+    private void updateHighScoreInFirebase(int newHighScore) {
+        String userId = PrefHelper.getUserId(this);
+        if (userId == null || userId.isEmpty()) return;
+
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
+
+        userRef.child("highScore").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Integer currentHighScore = snapshot.getValue(Integer.class);
+                if (currentHighScore == null || newHighScore > currentHighScore) {
+                    // Chỉ cập nhật nếu điểm mới cao hơn
+                    userRef.child("highScore").setValue(newHighScore)
+                            .addOnSuccessListener(aVoid -> Log.d("Firebase", "HighScore updated"))
+                            .addOnFailureListener(e -> Log.e("Firebase", "Update failed", e));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Firebase", "Failed to read highScore", error.toException());
+            }
+        });
     }
     @Override
     protected void onPause() {
