@@ -1,4 +1,4 @@
-package com.example.quizapp_main;
+package com.example.quizapp_main.model;
 
 import android.content.Context;
 import android.media.MediaPlayer;

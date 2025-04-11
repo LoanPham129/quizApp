@@ -1,4 +1,4 @@
-package com.example.quizapp_main;
+package com.example.quizapp_main.model;
 
 public class QuestionItem {
     String question, answer1, answer2, answer3, answer4, correct;

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="24dp"
-        tools:context=".ResultActivity">
+        tools:context=".screen.ResultActivity">
 
         <!-- AppBar (Header) -->
         <com.google.android.material.appbar.AppBarLayout
@@ -70,7 +70,7 @@
                     android:layout_marginTop="16dp"
                     android:text="Số tiền bạn đã thắng: 0 VND"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

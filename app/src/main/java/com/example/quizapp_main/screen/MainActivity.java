@@ -1,4 +1,4 @@
-package com.example.quizapp_main;
+package com.example.quizapp_main.screen;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.quizapp_main.model.AppConfig;
+import com.example.quizapp_main.R;
+import com.example.quizapp_main.model.SoundManager;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 public class MainActivity extends AppCompatActivity {

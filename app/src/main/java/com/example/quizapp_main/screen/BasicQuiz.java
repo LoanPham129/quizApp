@@ -1,4 +1,4 @@
-package com.example.quizapp_main;
+package com.example.quizapp_main.screen;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -15,7 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,22 +23,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-
+import com.example.quizapp_main.model.AppConfig;
+import com.example.quizapp_main.model.QuestionItem;
+import com.example.quizapp_main.R;
+import com.example.quizapp_main.model.SoundManager;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.FirebaseApp;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -94,7 +87,6 @@ public class BasicQuiz extends AppCompatActivity {
         loadAllQuestion();
         Collections.shuffle(questionItems);
     }
-
     private void setupBackPressHandler() {
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
@@ -111,7 +103,6 @@ public class BasicQuiz extends AppCompatActivity {
             }
         });
     }
-
     private void setupAnswerClickListeners() {
         Aans.setOnClickListener(v -> handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer1()));
         Bans.setOnClickListener(v -> handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer2()));
@@ -157,7 +148,6 @@ public class BasicQuiz extends AppCompatActivity {
 
         currentMoney.setOnClickListener(v -> showRewardTable());
     }
-
     private void setupLifelineButtons() {
         // 50:50
         findViewById(R.id.help_5050).setOnClickListener(v -> {
@@ -223,10 +213,6 @@ public class BasicQuiz extends AppCompatActivity {
             }
         });
     }
-
-
-
-
     private void setQuestionScreen(int currentQuestion) {
         if (AppConfig.isVolumeOn) {
             soundManager.play(this, R.raw.question, false);

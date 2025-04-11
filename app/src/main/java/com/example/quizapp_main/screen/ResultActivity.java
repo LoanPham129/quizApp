@@ -1,11 +1,8 @@
-package com.example.quizapp_main;
+package com.example.quizapp_main.screen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +10,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.quizapp_main.model.AppConfig;
 import com.example.quizapp_main.R;
+import com.example.quizapp_main.model.SoundManager;
 import com.google.android.material.card.MaterialCardView;
 
 public class ResultActivity extends AppCompatActivity {
