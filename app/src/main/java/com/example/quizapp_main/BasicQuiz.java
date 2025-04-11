@@ -10,6 +10,8 @@ import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -69,7 +71,10 @@ public class BasicQuiz extends AppCompatActivity {
             {2, 400000},
             {1, 200000}
     };
-    TextView questionNumberText;
+    TextView questionNumberText, currentMoney;
+    ProgressBar loadingSpinner;
+    LinearLayout quizContainer, helpButtonsContainer;
+    Button quitButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FirebaseApp.initializeApp(this);
@@ -86,6 +91,12 @@ public class BasicQuiz extends AppCompatActivity {
 
         TextView tvMoney = findViewById(R.id.currentMoney);
         tvMoney.setOnClickListener(v -> showRewardTable());
+
+        loadingSpinner = findViewById(R.id.loading_spinner);
+        quizContainer = findViewById(R.id.quiz_container);
+        helpButtonsContainer = findViewById(R.id.help_buttons_container);
+        quitButton = findViewById(R.id.btn_give_up);
+        currentMoney = findViewById(R.id.currentMoney);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -256,6 +267,12 @@ public class BasicQuiz extends AppCompatActivity {
     }
 
     private void loadAllQuestion() {
+        loadingSpinner.setVisibility(View.VISIBLE);
+        quizContainer.setVisibility(View.GONE);
+        helpButtonsContainer.setVisibility(View.GONE);
+        quitButton.setVisibility(View.GONE);
+        currentMoney.setVisibility(View.GONE);
+
         questionItems = new ArrayList<>();
 
         List<QuestionLoadInfo> questionLoadList = Arrays.asList(
@@ -278,8 +295,13 @@ public class BasicQuiz extends AppCompatActivity {
     }
     private void loadQuestionsSequentially(List<QuestionLoadInfo> questionLoadList, int index) {
         if (index >= questionLoadList.size()) {
-            // Khi đã load xong tất cả
             setQuestionScreen(currentQuestion);
+
+            loadingSpinner.setVisibility(View.GONE);
+            quizContainer.setVisibility(View.VISIBLE);
+            helpButtonsContainer.setVisibility(View.VISIBLE);
+            quitButton.setVisibility(View.VISIBLE);
+            currentMoney.setVisibility(View.VISIBLE);
             return;
         }
 
