@@ -33,6 +33,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -102,8 +103,15 @@ public class BasicQuiz extends AppCompatActivity {
                         .setMessage("Bạn có chắc chắn muốn bỏ cuộc không?")
                         .setNegativeButton("Hủy", (dialog, which) -> dialog.dismiss())
                         .setPositiveButton("Đồng ý", (dialog, which) -> {
-                            // Quay lại màn hình chính
-                            startActivity(new Intent(BasicQuiz.this, MainActivity.class));
+                            // Tính tiền mốc an toàn gần nhất đã qua
+                            totalMoney = getSafeMoney(currentQuestion - 1);
+
+                            // Tạo Intent chuyển sang màn hình kết quả
+                            Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
+                            intent.putExtra("correct", correct);
+                            intent.putExtra("wrong", wrong);
+                            intent.putExtra("totalMoney", totalMoney);
+                            startActivity(intent);
                             finish();
                         })
                         .show();
@@ -249,46 +257,55 @@ public class BasicQuiz extends AppCompatActivity {
 
     private void loadAllQuestion() {
         questionItems = new ArrayList<>();
-        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
 
-        dbRef.child("easyquestion").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                List<QuestionItem> easyList = new ArrayList<>();
-                for (DataSnapshot questionSnap : snapshot.getChildren()) {
-                    QuestionItem item = questionSnap.getValue(QuestionItem.class);
-                    easyList.add(item);
-                }
+        List<QuestionLoadInfo> questionLoadList = Arrays.asList(
+                new QuestionLoadInfo("easyquestion", 5),
+                new QuestionLoadInfo("mediumquestion", 5),
+                new QuestionLoadInfo("hardquestion", 3),
+                new QuestionLoadInfo("superhardquestion", 2)
+        );
 
-                Collections.shuffle(easyList);
-                questionItems.addAll(easyList.subList(0, Math.min(4, easyList.size()))); // Lấy 5 câu
-
-                loadMediumQuestions(dbRef);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) { }
-        });
+        loadQuestionsSequentially(questionLoadList, 0);
     }
+    private static class QuestionLoadInfo {
+        String nodeName;
+        int numberOfQuestions;
 
-    private void loadMediumQuestions(DatabaseReference dbRef) {
-        dbRef.child("mediumquestion").addListenerForSingleValueEvent(new ValueEventListener() {
+        QuestionLoadInfo(String nodeName, int numberOfQuestions) {
+            this.nodeName = nodeName;
+            this.numberOfQuestions = numberOfQuestions;
+        }
+    }
+    private void loadQuestionsSequentially(List<QuestionLoadInfo> questionLoadList, int index) {
+        if (index >= questionLoadList.size()) {
+            // Khi đã load xong tất cả
+            setQuestionScreen(currentQuestion);
+            return;
+        }
+
+        QuestionLoadInfo info = questionLoadList.get(index);
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child(info.nodeName);
+
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                List<QuestionItem> mediumList = new ArrayList<>();
+                List<QuestionItem> tempList = new ArrayList<>();
                 for (DataSnapshot questionSnap : snapshot.getChildren()) {
                     QuestionItem item = questionSnap.getValue(QuestionItem.class);
-                    mediumList.add(item);
+                    tempList.add(item);
                 }
 
-                Collections.shuffle(mediumList);
-                questionItems.addAll(mediumList.subList(0, Math.min(5, mediumList.size()))); // Lấy 4 câu
+                Collections.shuffle(tempList);
+                questionItems.addAll(tempList.subList(0, Math.min(info.numberOfQuestions, tempList.size())));
 
-                loadHardQuestions(dbRef);
+                // Gọi tiếp mức độ tiếp theo
+                loadQuestionsSequentially(questionLoadList, index + 1);
             }
 
             @Override
-            public void onCancelled(DatabaseError error) { }
+            public void onCancelled(DatabaseError error) {
+                // Xử lý lỗi nếu cần
+            }
         });
     }
 
@@ -344,56 +361,11 @@ public class BasicQuiz extends AppCompatActivity {
         }, 1500);
     }
     private int getSafeMoney(int questionIndex) {
-        // Các mốc an toàn: câu 5, 10, 15 tương ứng index: 4, 9, 14
-        if (questionIndex >= 14) return 150000000; // câu 15 đúng
-        else if (questionIndex >= 9) return 22000000; // đến câu 10
-        else if (questionIndex >= 4) return 2000000; // đến câu 5
-        else return 0; // chưa qua mốc nào
+        if (questionIndex >= 14) return 150000000;
+        else if (questionIndex >= 9) return 22000000;
+        else if (questionIndex >= 4) return 2000000;
+        else return 0;
     }
-
-
-    private void loadHardQuestions(DatabaseReference dbRef) {
-        dbRef.child("hardquestion").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                List<QuestionItem> hardList = new ArrayList<>();
-                for (DataSnapshot questionSnap : snapshot.getChildren()) {
-                    QuestionItem item = questionSnap.getValue(QuestionItem.class);
-                    hardList.add(item);
-                }
-
-                Collections.shuffle(hardList);
-                questionItems.addAll(hardList.subList(0, Math.min(4, hardList.size()))); // Lấy 3 câu
-
-                loadSuperHardQuestions(dbRef);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) { }
-        });
-    }
-
-    private void loadSuperHardQuestions(DatabaseReference dbRef) {
-        dbRef.child("superhardquestion").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                List<QuestionItem> superHardList = new ArrayList<>();
-                for (DataSnapshot questionSnap : snapshot.getChildren()) {
-                    QuestionItem item = questionSnap.getValue(QuestionItem.class);
-                    superHardList.add(item);
-                }
-
-                Collections.shuffle(superHardList);
-                questionItems.addAll(superHardList.subList(0, Math.min(2, superHardList.size()))); // Lấy 3 câu
-
-                setQuestionScreen(currentQuestion); // Chỉ set sau khi đủ 15 câu
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) { }
-        });
-    }
-
     private void showAudienceDialog(String correctAnswer) {
         View dialogView = getLayoutInflater().inflate(R.layout.audience_poll_dialog, null);
 
