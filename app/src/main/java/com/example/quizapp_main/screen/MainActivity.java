@@ -2,7 +2,11 @@ package com.example.quizapp_main.screen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +21,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 public class MainActivity extends AppCompatActivity {
     ImageView volumeToggle;
-    MaterialCardView easyCard, exitCard;
+    MaterialCardView easyCard, exitCard, helpCard;
     SoundManager soundManager;
 
     @Override
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         }
         easyCard = findViewById(R.id.easyCard);
         exitCard = findViewById(R.id.exitCard);
+        helpCard = findViewById(R.id.helpCard);
 
         volumeToggle = findViewById(R.id.volumeToggle);
 
@@ -55,6 +60,38 @@ public class MainActivity extends AppCompatActivity {
 
         exitCard.setOnClickListener(v -> {
             showExitDialog();
+        });
+
+        helpCard.setOnClickListener(v -> {
+            TextView guideText = new TextView(MainActivity.this);
+            guideText.setText(
+                    "MỤC TIÊU\n" +
+                            "Bạn cần trả lời đúng 15 câu hỏi để giành chiến thắng và nhận phần thưởng tối đa.\n\n" +
+
+                            "CÁCH CHƠI\n" +
+                            "- Mỗi câu hỏi có 4 đáp án A, B, C, D, chọn 1 đáp án. \n- Nếu TRẢ LỜI ĐÚNG, bạn sẽ nhận phần thưởng và đến câu tiếp theo. \n- Nếu TRẢ LỜI SAI, bạn sẽ nhận số tiền tương ứng với mốc an toàn gần nhất đã đạt được.\n\n" +
+
+                            "CÁC MỐC AN TOÀN\n" +
+                            "- Câu 5: 2.000.000 VNĐ\n" +
+                            "- Câu 10: 22.000.000 VNĐ\n" +
+                            "- Câu 15: 150.000.000 VNĐ\n\n" +
+
+                            "TRỢ GIÚP (chỉ dùng 1 lần):\n" +
+                            "- 50:50: Loại bỏ 2 đáp án sai\n" +
+                            "- Hỏi khán giả: Hiển thị tỷ lệ chọn của khán giả\n" +
+                            "- Gọi điện: Nhận gợi ý từ người thân\n\n" +
+
+                            "BẠN CÓ THỂ BỎ CUỘC bất kỳ lúc nào để giữ số tiền hiện tại."
+            );
+            guideText.setPadding(48, 32, 48, 0);
+            guideText.setTextSize(16);
+            guideText.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START); // 👈 Căn trái
+
+            new MaterialAlertDialogBuilder(MainActivity.this)
+                    .setTitle("Hướng dẫn chơi")
+                    .setView(guideText)
+                    .setPositiveButton("OK", null)
+                    .show();
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
