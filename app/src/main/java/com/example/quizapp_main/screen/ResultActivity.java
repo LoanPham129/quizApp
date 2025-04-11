@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,14 +17,19 @@ import com.example.quizapp_main.R;
 import com.google.android.material.card.MaterialCardView;
 
 public class ResultActivity extends AppCompatActivity {
-
+    SoundManager soundManager;
     MaterialCardView home, playAgain;  // Added playAgain button
     TextView resultInfo;
-    ImageView resultImage;
+
     TextView resultMoney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        soundManager = new SoundManager();
+        if (AppConfig.isVolumeOn) {
+            soundManager.play(this, R.raw.end, false);
+        }
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_result);
@@ -35,23 +41,22 @@ public class ResultActivity extends AppCompatActivity {
         home = findViewById(R.id.returnHome);
         playAgain = findViewById(R.id.playAgain);  // New button
         resultInfo = findViewById(R.id.resultInfo);
-        resultImage = findViewById(R.id.resultImage);
 
-        // Get data from intent
 
         // Home button - go to main screen
         home.setOnClickListener(v -> {
+            soundManager.stop();
             startActivity(new Intent(ResultActivity.this, MainActivity.class));
             finish();
         });
 
         // Play Again button - restart the quiz
         playAgain.setOnClickListener(v -> {
+            soundManager.stop();
             startActivity(new Intent(ResultActivity.this, BasicQuiz.class));  // Assuming QuizActivity is your quiz activity
             finish();  // Close the current activity
         });
 
-        // Adjust layout for system bars (for edge-to-edge design)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -59,15 +64,42 @@ public class ResultActivity extends AppCompatActivity {
         });
         resultMoney.setText("Số tiền bạn đã thắng: " + formatMoney(totalMoney));
 
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                startActivity(new Intent(ResultActivity.this, MainActivity.class));
+                finish();
+            }
+        });
+
     }
     private String formatMoney(int money) {
-        return String.format("%,d VND", money);  // Ví dụ: 200,000 VND
+        return String.format("%,d VND", money);
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(ResultActivity.this, MainActivity.class));  // Go back to the main activity
-        finish();
+    protected void onDestroy() {
+        super.onDestroy();
+        if (soundManager != null) {
+            soundManager.stop();
+        }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (soundManager != null) {
+            soundManager.stop();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (soundManager != null && AppConfig.isVolumeOn && !soundManager.isPlaying()) {
+            soundManager.play(this, R.raw.end, true);
+        }
+    }
+
 }

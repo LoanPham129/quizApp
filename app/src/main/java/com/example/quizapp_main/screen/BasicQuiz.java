@@ -17,6 +17,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.Insets;
@@ -49,10 +50,9 @@ import android.graphics.drawable.ColorDrawable;
 public class BasicQuiz extends AppCompatActivity {
 
     TextView quiztext, Aans, Bans, Cans, Dans;
+    SoundManager soundManager;
     List<QuestionItem> questionItems;
     int currentQuestion = 0;
-    int correct = 0;
-    int wrong = 0;
     int totalMoney = 0;
     int[][] rewards = {
             {15, 150000000},
@@ -75,13 +75,50 @@ public class BasicQuiz extends AppCompatActivity {
     ProgressBar loadingSpinner;
     LinearLayout quizContainer, helpButtonsContainer;
     Button quitButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        soundManager = new SoundManager();
         FirebaseApp.initializeApp(this);
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_basic_quiz);
 
+        setupBackPressHandler();
+        initViews();
+        setupWindowInsets();
+        setupQuitButton();
+        setupAnswerClickListeners();
+        setupLifelineButtons();
+
+        loadAllQuestion();
+        Collections.shuffle(questionItems);
+    }
+
+    private void setupBackPressHandler() {
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                new MaterialAlertDialogBuilder(BasicQuiz.this)
+                        .setTitle(R.string.app_name)
+                        .setMessage("Are you sure you want to exit the quiz?")
+                        .setNegativeButton(android.R.string.no, (dialog, which) -> dialog.dismiss())
+                        .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                            startActivity(new Intent(BasicQuiz.this, MainActivity.class));
+                            finish();
+                        })
+                        .show();
+            }
+        });
+    }
+
+    private void setupAnswerClickListeners() {
+        Aans.setOnClickListener(v -> handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer1()));
+        Bans.setOnClickListener(v -> handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer2()));
+        Cans.setOnClickListener(v -> handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer3()));
+        Dans.setOnClickListener(v -> handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer4()));
+    }
+    private void initViews() {
         quiztext = findViewById(R.id.quizText);
         questionNumberText = findViewById(R.id.questionNumber);
         Aans = findViewById(R.id.Aanswer);
@@ -89,85 +126,46 @@ public class BasicQuiz extends AppCompatActivity {
         Cans = findViewById(R.id.Canswer);
         Dans = findViewById(R.id.Danswer);
 
-        TextView tvMoney = findViewById(R.id.currentMoney);
-        tvMoney.setOnClickListener(v -> showRewardTable());
-
         loadingSpinner = findViewById(R.id.loading_spinner);
         quizContainer = findViewById(R.id.quiz_container);
         helpButtonsContainer = findViewById(R.id.help_buttons_container);
         quitButton = findViewById(R.id.btn_give_up);
         currentMoney = findViewById(R.id.currentMoney);
-
+    }
+    private void setupWindowInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        //thoát game
-        Button quitButton = findViewById(R.id.btn_give_up);
-        quitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Tạo một hộp thoại xác nhận khi nhấn nút bỏ cuộc
-                new MaterialAlertDialogBuilder(BasicQuiz.this)
-                        .setTitle("Xác nhận")
-                        .setMessage("Bạn có chắc chắn muốn bỏ cuộc không?")
-                        .setNegativeButton("Hủy", (dialog, which) -> dialog.dismiss())
-                        .setPositiveButton("Đồng ý", (dialog, which) -> {
-                            // Tính tiền mốc an toàn gần nhất đã qua
-                            totalMoney = getSafeMoney(currentQuestion - 1);
-
-                            // Tạo Intent chuyển sang màn hình kết quả
-                            Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
-                            intent.putExtra("correct", correct);
-                            intent.putExtra("wrong", wrong);
-                            intent.putExtra("totalMoney", totalMoney);
-                            startActivity(intent);
-                            finish();
-                        })
-                        .show();
-            }
-        });
-        loadAllQuestion();
-        Collections.shuffle(questionItems);
-
-
-
-        Aans.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer1());
-            }
+    }
+    private void setupQuitButton() {
+        quitButton.setOnClickListener(v -> {
+            new MaterialAlertDialogBuilder(BasicQuiz.this)
+                    .setTitle("Xác nhận")
+                    .setMessage("Bạn có chắc chắn muốn bỏ cuộc không?")
+                    .setNegativeButton("Hủy", (dialog, which) -> dialog.dismiss())
+                    .setPositiveButton("Đồng ý", (dialog, which) -> {
+                        totalMoney = getSafeMoney(currentQuestion - 1);
+                        Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
+                        intent.putExtra("totalMoney", totalMoney);
+                        startActivity(intent);
+                        finish();
+                    })
+                    .show();
         });
 
-        Bans.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer2());
-            }
-        });
+        currentMoney.setOnClickListener(v -> showRewardTable());
+    }
 
-        Cans.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer3());
-            }
-        });
-
-        Dans.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer4());
-            }
-        });
-
+    private void setupLifelineButtons() {
+        // 50:50
         findViewById(R.id.help_5050).setOnClickListener(v -> {
             v.setVisibility(View.INVISIBLE);
             v.setEnabled(false);
 
             String correct = questionItems.get(currentQuestion).getCorrect();
 
-            // Tạo danh sách các đáp án và TextView tương ứng
             List<String> answers = new ArrayList<>();
             List<TextView> answerViews = new ArrayList<>();
 
@@ -181,7 +179,6 @@ public class BasicQuiz extends AppCompatActivity {
             answerViews.add(Cans);
             answerViews.add(Dans);
 
-            // Tìm các đáp án sai
             List<Integer> wrongIndexes = new ArrayList<>();
             for (int i = 0; i < answers.size(); i++) {
                 if (!answers.get(i).equals(correct)) {
@@ -189,7 +186,6 @@ public class BasicQuiz extends AppCompatActivity {
                 }
             }
 
-            // Trộn và chọn 2 đáp án sai bất kỳ để ẩn
             Collections.shuffle(wrongIndexes);
             int remove1 = wrongIndexes.get(0);
             int remove2 = wrongIndexes.get(1);
@@ -198,32 +194,27 @@ public class BasicQuiz extends AppCompatActivity {
             answerViews.get(remove2).setVisibility(View.INVISIBLE);
         });
 
+        // Audience
         findViewById(R.id.help_audience).setOnClickListener(v -> {
             v.setVisibility(View.INVISIBLE);
             v.setEnabled(false);
 
             String correctAnswer = questionItems.get(currentQuestion).getCorrect();
-            showAudienceDialog(correctAnswer); // gọi đúng hàm mới có tham số
+            showAudienceDialog(correctAnswer);
         });
 
+        // Call a Friend
         findViewById(R.id.help_call).setOnClickListener(v -> {
             v.setVisibility(View.INVISIBLE);
             v.setEnabled(false);
 
-            // Số điện thoại giả định để gọi
-            String phoneNumber = "0123456789";
-
-            // Tạo Intent mở ứng dụng gọi điện
             Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:" + phoneNumber));
+            intent.setData(Uri.parse("tel:"));
 
-            // Kiểm tra xem thiết bị có ứng dụng gọi điện không
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
             } else {
-                // Nếu không có app gọi điện (thường là giả lập), hiển thị đáp án đúng
                 String correctAnswer = questionItems.get(currentQuestion).getCorrect();
-
                 new MaterialAlertDialogBuilder(this)
                         .setTitle("Gợi ý từ người thân")
                         .setMessage("Người thân nghĩ đáp án đúng là: " + correctAnswer)
@@ -234,7 +225,12 @@ public class BasicQuiz extends AppCompatActivity {
     }
 
 
+
+
     private void setQuestionScreen(int currentQuestion) {
+        if (AppConfig.isVolumeOn) {
+            soundManager.play(this, R.raw.question, false);
+        }
         resetAnswerColors();
 
         // Cập nhật số câu hỏi (cộng 1 vì index bắt đầu từ 0)
@@ -332,7 +328,6 @@ public class BasicQuiz extends AppCompatActivity {
     }
 
     private void handleAnswerClick(View v, String selectedAnswer) {
-        // Đổi màu đáp án được chọn thành màu xám/tạm thời
         v.setBackgroundColor(Color.parseColor("#FFA500"));
         if (v instanceof TextView) {
             ((TextView) v).setTextColor(Color.BLACK);
@@ -344,7 +339,10 @@ public class BasicQuiz extends AppCompatActivity {
 
             // Nếu đúng
             if (selectedAnswer.equals(correctAnswer)) {
-                correct++;
+                if (AppConfig.isVolumeOn) {
+                    soundManager.play(this, R.raw.dung, false);
+                }
+
                 v.setBackgroundResource(R.color.green);
 
                 int reward = getRewardForQuestion(currentQuestion);
@@ -357,19 +355,19 @@ public class BasicQuiz extends AppCompatActivity {
                     new Handler().postDelayed(() -> {
                         currentQuestion++;
                         setQuestionScreen(currentQuestion);
-                    }, 500);
+                    }, 2000);
                 } else {
                     new Handler().postDelayed(() -> {
                         Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
-                        intent.putExtra("correct", correct);
-                        intent.putExtra("wrong", wrong);
                         intent.putExtra("totalMoney", totalMoney);
                         startActivity(intent);
                         finish();
-                    }, 500);
+                    }, 2000);
                 }
             } else {
-                wrong++;
+                if (AppConfig.isVolumeOn) {
+                    soundManager.play(this, R.raw.sai, false);
+                }
                 v.setBackgroundResource(R.color.red); // Đáp án chọn sai
 
                 // Cập nhật số tiền theo mốc an toàn đã vượt qua
@@ -380,7 +378,7 @@ public class BasicQuiz extends AppCompatActivity {
 
                 showCorrectAnswerAndFinish(); // sẽ delay thêm 1s ở trong hàm này
             }
-        }, 1500);
+        }, 3000);
     }
     private int getSafeMoney(int questionIndex) {
         if (questionIndex >= 14) return 150000000;
@@ -456,9 +454,7 @@ public class BasicQuiz extends AppCompatActivity {
         return votes;
     }
 
-
-//    phần thưởng
-// Trong Activity/Fragment của bạn
+//  phần thưởng
     private void showRewardTable() {
     final Dialog dialog = new Dialog(this);
     dialog.setContentView(R.layout.reward_table);
@@ -481,17 +477,15 @@ public class BasicQuiz extends AppCompatActivity {
             row.setBackgroundColor(Color.parseColor("#FFA500")); // Màu cam
         }
         // ✅ Nếu là mốc 15 và đã đạt đến → tô xanh
-        else if (questionNumber == 15 && currentQuestion == 14) {
+        else if (questionNumber == 15) {
             row.setBackgroundColor(Color.parseColor("#32CD32")); // Màu xanh lá
         }
         // ✅ Nếu là mốc an toàn (5, 10, 15) → tô vàng
-        else if (questionNumber == 5 || questionNumber == 10 || questionNumber == 15) {
+        else if (questionNumber == 5 || questionNumber == 10) {
             row.setBackgroundColor(Color.parseColor("#FFFACD")); // Màu vàng nhạt (LemonChiffon)
         }
         // Các dòng xen kẽ màu xám trắng
-        else if (i % 2 == 0) {
-            row.setBackgroundColor(Color.parseColor("#F5F5F5")); // Xám nhạt
-        } else {
+        else {
             row.setBackgroundColor(Color.WHITE);
         }
 
@@ -557,28 +551,36 @@ public class BasicQuiz extends AppCompatActivity {
         // Đợi 1 giây rồi chuyển sang màn hình kết quả
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
-            intent.putExtra("correct", correct);
-            intent.putExtra("wrong", wrong);
             intent.putExtra("totalMoney", totalMoney);
             startActivity(intent);
             finish();
-        }, 1500);
+        }, 3000);
     }
-
 
     @Override
-    public void onBackPressed() {
-        new MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.app_name)
-                .setMessage("Are you sure you want to exit the quiz?")
-                .setNegativeButton(android.R.string.no, (dialog, which) -> {
-                    dialog.dismiss();
-                    super.onBackPressed(); // Gọi lại hành vi mặc định nếu cần
-                })
-                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                    startActivity(new Intent(BasicQuiz.this, MainActivity.class));
-                    finish();
-                })
-                .show();
+    protected void onPause() {
+        super.onPause();
+        if (soundManager != null) {
+            soundManager.stop();
+        }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (soundManager != null && AppConfig.isVolumeOn && questionItems != null && questionItems.size() > 0) {
+            // Chỉ phát âm nếu đang bật volume
+            soundManager.play(this, R.raw.question, false);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (soundManager != null) {
+            soundManager.stop();
+        }
+    }
+
 }
