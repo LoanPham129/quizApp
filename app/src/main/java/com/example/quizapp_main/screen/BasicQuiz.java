@@ -109,6 +109,107 @@ public class BasicQuiz extends AppCompatActivity {
         Cans.setOnClickListener(v -> handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer3()));
         Dans.setOnClickListener(v -> handleAnswerClick(v, questionItems.get(currentQuestion).getAnswer4()));
     }
+    private void handleAnswerClick(View v, String selectedAnswer) {
+        setAnswerOptionsEnabled(false);
+        setHelpButtonsEnabled(false);
+        v.setBackgroundColor(Color.parseColor("#FFA500"));
+        if (v instanceof TextView) {
+            ((TextView) v).setTextColor(Color.BLACK);
+        }
+
+        // Delay 1s để hiển thị đáp án người chọn, sau đó xử lý tiếp
+        new Handler().postDelayed(() -> {
+            String correctAnswer = questionItems.get(currentQuestion).getCorrect();
+
+            // Nếu đúng
+            if (selectedAnswer.equals(correctAnswer)) {
+                if (AppConfig.isVolumeOn) {
+                    soundManager.play(this, R.raw.dung, false);
+                }
+
+                v.setBackgroundResource(R.color.green);
+
+                int reward = getRewardForQuestion(currentQuestion);
+                totalMoney = reward;
+
+                TextView tvMoney = findViewById(R.id.currentMoney);
+                tvMoney.setText(formatMoney(totalMoney));
+
+                if (currentQuestion < questionItems.size() - 1) {
+                    new Handler().postDelayed(() -> {
+                        currentQuestion++;
+                        setQuestionScreen(currentQuestion);
+                    }, 2000);
+                } else {
+                    new Handler().postDelayed(() -> {
+                        Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
+                        intent.putExtra("totalMoney", totalMoney);
+                        startActivity(intent);
+                        finish();
+                    }, 2000);
+                }
+            } else {
+                if (AppConfig.isVolumeOn) {
+                    soundManager.play(this, R.raw.sai, false);
+                }
+                v.setBackgroundResource(R.color.red); // Đáp án chọn sai
+
+                // Cập nhật số tiền theo mốc an toàn đã vượt qua
+                totalMoney = getSafeMoney(currentQuestion - 1); // -1 vì vừa trả lời sai
+
+                TextView tvMoney = findViewById(R.id.currentMoney);
+                tvMoney.setText(formatMoney(totalMoney));
+
+                showCorrectAnswerAndFinish(); // sẽ delay thêm 1s ở trong hàm này
+            }
+        }, 3000);
+    }
+    private void showCorrectAnswerAndFinish() {
+        // Tìm đáp án đúng và highlight màu xanh
+        String correctAnswer = questionItems.get(currentQuestion).getCorrect();
+
+        if (correctAnswer.equals(Aans.getText().toString())) {
+            Aans.setBackgroundResource(R.color.green);
+        } else if (correctAnswer.equals(Bans.getText().toString())) {
+            Bans.setBackgroundResource(R.color.green);
+        } else if (correctAnswer.equals(Cans.getText().toString())) {
+            Cans.setBackgroundResource(R.color.green);
+        } else {
+            Dans.setBackgroundResource(R.color.green);
+        }
+
+        // Đợi 1 giây rồi chuyển sang màn hình kết quả
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
+            intent.putExtra("totalMoney", totalMoney);
+            startActivity(intent);
+            finish();
+        }, 3000);
+    }
+    private int getSafeMoney(int questionIndex) {
+        if (questionIndex >= 14) return 150000000;
+        else if (questionIndex >= 9) return 22000000;
+        else if (questionIndex >= 4) return 2000000;
+        else return 0;
+    }
+    private void loadAllQuestion() {
+        loadingSpinner.setVisibility(View.VISIBLE);
+        quizContainer.setVisibility(View.GONE);
+        helpButtonsContainer.setVisibility(View.GONE);
+        quitButton.setVisibility(View.GONE);
+        currentMoney.setVisibility(View.GONE);
+
+        questionItems = new ArrayList<>();
+
+        List<QuestionLoadInfo> questionLoadList = Arrays.asList(
+                new QuestionLoadInfo("easyquestion", 5),
+                new QuestionLoadInfo("mediumquestion", 5),
+                new QuestionLoadInfo("hardquestion", 3),
+                new QuestionLoadInfo("superhardquestion", 2)
+        );
+
+        loadQuestionsSequentially(questionLoadList, 0);
+    }
     private void initViews() {
         quiztext = findViewById(R.id.quizText);
         questionNumberText = findViewById(R.id.questionNumber);
@@ -219,6 +320,7 @@ public class BasicQuiz extends AppCompatActivity {
         }
         resetAnswerColors();
         setAnswerOptionsEnabled(true);
+        setHelpButtonsEnabled(true);
         // Cập nhật số câu hỏi (cộng 1 vì index bắt đầu từ 0)
         questionNumberText.setText("Câu hỏi " + (currentQuestion + 1));
 
@@ -246,25 +348,6 @@ public class BasicQuiz extends AppCompatActivity {
 
         Dans.setBackgroundResource(R.color.primary_color);
         Dans.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-    }
-
-    private void loadAllQuestion() {
-        loadingSpinner.setVisibility(View.VISIBLE);
-        quizContainer.setVisibility(View.GONE);
-        helpButtonsContainer.setVisibility(View.GONE);
-        quitButton.setVisibility(View.GONE);
-        currentMoney.setVisibility(View.GONE);
-
-        questionItems = new ArrayList<>();
-
-        List<QuestionLoadInfo> questionLoadList = Arrays.asList(
-                new QuestionLoadInfo("easyquestion", 5),
-                new QuestionLoadInfo("mediumquestion", 5),
-                new QuestionLoadInfo("hardquestion", 3),
-                new QuestionLoadInfo("superhardquestion", 2)
-        );
-
-        loadQuestionsSequentially(questionLoadList, 0);
     }
     private static class QuestionLoadInfo {
         String nodeName;
@@ -312,72 +395,8 @@ public class BasicQuiz extends AppCompatActivity {
             }
         });
     }
-
-    private void handleAnswerClick(View v, String selectedAnswer) {
-        setAnswerOptionsEnabled(false);
-        v.setBackgroundColor(Color.parseColor("#FFA500"));
-        if (v instanceof TextView) {
-            ((TextView) v).setTextColor(Color.BLACK);
-        }
-
-        // Delay 1s để hiển thị đáp án người chọn, sau đó xử lý tiếp
-        new Handler().postDelayed(() -> {
-            String correctAnswer = questionItems.get(currentQuestion).getCorrect();
-
-            // Nếu đúng
-            if (selectedAnswer.equals(correctAnswer)) {
-                if (AppConfig.isVolumeOn) {
-                    soundManager.play(this, R.raw.dung, false);
-                }
-
-                v.setBackgroundResource(R.color.green);
-
-                int reward = getRewardForQuestion(currentQuestion);
-                totalMoney = reward;
-
-                TextView tvMoney = findViewById(R.id.currentMoney);
-                tvMoney.setText(formatMoney(totalMoney));
-
-                if (currentQuestion < questionItems.size() - 1) {
-                    new Handler().postDelayed(() -> {
-                        currentQuestion++;
-                        setQuestionScreen(currentQuestion);
-                    }, 2000);
-                } else {
-                    new Handler().postDelayed(() -> {
-                        Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
-                        intent.putExtra("totalMoney", totalMoney);
-                        startActivity(intent);
-                        finish();
-                    }, 2000);
-                }
-            } else {
-                if (AppConfig.isVolumeOn) {
-                    soundManager.play(this, R.raw.sai, false);
-                }
-                v.setBackgroundResource(R.color.red); // Đáp án chọn sai
-
-                // Cập nhật số tiền theo mốc an toàn đã vượt qua
-                totalMoney = getSafeMoney(currentQuestion - 1); // -1 vì vừa trả lời sai
-
-                TextView tvMoney = findViewById(R.id.currentMoney);
-                tvMoney.setText(formatMoney(totalMoney));
-
-                showCorrectAnswerAndFinish(); // sẽ delay thêm 1s ở trong hàm này
-            }
-        }, 3000);
-    }
-    private void setAnswerOptionsEnabled(boolean enabled) {
-        findViewById(R.id.Aanswer).setEnabled(enabled);
-        findViewById(R.id.Banswer).setEnabled(enabled);
-        findViewById(R.id.Canswer).setEnabled(enabled);
-        findViewById(R.id.Danswer).setEnabled(enabled);
-    }
-    private int getSafeMoney(int questionIndex) {
-        if (questionIndex >= 14) return 150000000;
-        else if (questionIndex >= 9) return 22000000;
-        else if (questionIndex >= 4) return 2000000;
-        else return 0;
+    private String formatMoney(int amount) {
+        return String.format("%,d", amount) + " VND";
     }
     private void showAudienceDialog(String correctAnswer) {
         View dialogView = getLayoutInflater().inflate(R.layout.audience_poll_dialog, null);
@@ -421,7 +440,6 @@ public class BasicQuiz extends AppCompatActivity {
                 .setView(dialogView)
                 .show();
     }
-
     private int[] generateVotes(int correctIndex) {
         int[] votes = new int[4];
 
@@ -512,10 +530,6 @@ public class BasicQuiz extends AppCompatActivity {
 
         row.addView(textView, new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f));
     }
-
-    private String formatMoney(int amount) {
-        return String.format("%,d", amount) + " VND";
-    }
     private int getRewardForQuestion(int questionIndex) {
         // Tính toán chỉ số trong bảng phần thưởng (15 câu hỏi, index bắt đầu từ 0)
         int rewardIndex = 15 - (questionIndex + 1); // Cộng 1 vì questionIndex bắt đầu từ 0
@@ -526,30 +540,22 @@ public class BasicQuiz extends AppCompatActivity {
         }
         return 0; // Nếu không có phần thưởng, trả về 0
     }
-
-    private void showCorrectAnswerAndFinish() {
-        // Tìm đáp án đúng và highlight màu xanh
-        String correctAnswer = questionItems.get(currentQuestion).getCorrect();
-
-        if (correctAnswer.equals(Aans.getText().toString())) {
-            Aans.setBackgroundResource(R.color.green);
-        } else if (correctAnswer.equals(Bans.getText().toString())) {
-            Bans.setBackgroundResource(R.color.green);
-        } else if (correctAnswer.equals(Cans.getText().toString())) {
-            Cans.setBackgroundResource(R.color.green);
-        } else {
-            Dans.setBackgroundResource(R.color.green);
-        }
-
-        // Đợi 1 giây rồi chuyển sang màn hình kết quả
-        new Handler().postDelayed(() -> {
-            Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
-            intent.putExtra("totalMoney", totalMoney);
-            startActivity(intent);
-            finish();
-        }, 3000);
+    private void setAnswerOptionsEnabled(boolean enabled) {
+        findViewById(R.id.Aanswer).setEnabled(enabled);
+        findViewById(R.id.Banswer).setEnabled(enabled);
+        findViewById(R.id.Canswer).setEnabled(enabled);
+        findViewById(R.id.Danswer).setEnabled(enabled);
     }
+    private void setHelpButtonsEnabled(boolean enabled) {
+        findViewById(R.id.help_5050).setEnabled(enabled);
+        findViewById(R.id.help_5050).setAlpha(enabled ? 1.0f : 0.5f);
 
+        findViewById(R.id.help_audience).setEnabled(enabled);
+        findViewById(R.id.help_audience).setAlpha(enabled ? 1.0f : 0.5f);
+
+        findViewById(R.id.help_call).setEnabled(enabled);
+        findViewById(R.id.help_call).setAlpha(enabled ? 1.0f : 0.5f);
+    }
     @Override
     protected void onPause() {
         super.onPause();

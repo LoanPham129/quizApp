@@ -106,16 +106,52 @@
         </androidx.core.widget.NestedScrollView>
 
         <!-- Biểu tượng volume nổi bên góc phải -->
-        <ImageView
-            android:id="@+id/volumeToggle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="top|end"
-            android:layout_margin="16dp"
-            android:padding="8dp"
-            android:src="@drawable/volume_on"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/userGreeting"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:text="Hi User"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/volumeToggle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:padding="8dp"
+                android:src="@drawable/volume_on"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/userIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:padding="8dp"
+                android:src="@drawable/user"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
