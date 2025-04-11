@@ -218,7 +218,7 @@ public class BasicQuiz extends AppCompatActivity {
             soundManager.play(this, R.raw.question, false);
         }
         resetAnswerColors();
-
+        setAnswerOptionsEnabled(true);
         // Cập nhật số câu hỏi (cộng 1 vì index bắt đầu từ 0)
         questionNumberText.setText("Câu hỏi " + (currentQuestion + 1));
 
@@ -314,6 +314,7 @@ public class BasicQuiz extends AppCompatActivity {
     }
 
     private void handleAnswerClick(View v, String selectedAnswer) {
+        setAnswerOptionsEnabled(false);
         v.setBackgroundColor(Color.parseColor("#FFA500"));
         if (v instanceof TextView) {
             ((TextView) v).setTextColor(Color.BLACK);
@@ -365,6 +366,12 @@ public class BasicQuiz extends AppCompatActivity {
                 showCorrectAnswerAndFinish(); // sẽ delay thêm 1s ở trong hàm này
             }
         }, 3000);
+    }
+    private void setAnswerOptionsEnabled(boolean enabled) {
+        findViewById(R.id.Aanswer).setEnabled(enabled);
+        findViewById(R.id.Banswer).setEnabled(enabled);
+        findViewById(R.id.Canswer).setEnabled(enabled);
+        findViewById(R.id.Danswer).setEnabled(enabled);
     }
     private int getSafeMoney(int questionIndex) {
         if (questionIndex >= 14) return 150000000;

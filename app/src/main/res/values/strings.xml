@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Ai Là Triệu Phú</string>
+    <string name="guide_text">
+    CÁCH CHƠI\n
+    - Mỗi câu hỏi có 4 đáp án A, B, C, D, chọn 1 đáp án.\n
+    - Nếu TRẢ LỜI ĐÚNG, bạn sẽ nhận phần thưởng và đến câu tiếp theo.\n
+    - Nếu TRẢ LỜI SAI, bạn sẽ nhận số tiền tương ứng với mốc an toàn gần nhất đã đạt được.\n\n
+
+    CÁC MỐC AN TOÀN\n
+    - Câu 5: 2.000.000 VNĐ\n
+    - Câu 10: 22.000.000 VNĐ\n
+    - Câu 15: 150.000.000 VNĐ\n\n
+
+    TRỢ GIÚP (chỉ dùng 1 lần):\n
+    - 50:50: Loại bỏ 2 đáp án sai\n
+    - Hỏi khán giả: Hiển thị tỷ lệ chọn của khán giả\n
+    - Gọi điện: Nhận gợi ý từ người thân\n\n
+
+    BẠN CÓ THỂ BỎ CUỘC bất kỳ lúc nào để giữ số tiền hiện tại.
+</string>
 </resources>
