@@ -51,6 +51,23 @@ public class BasicQuiz extends AppCompatActivity {
     int correct = 0;
     int wrong = 0;
     int totalMoney = 0;
+    int[][] rewards = {
+            {15, 150000000},
+            {14, 85000000},
+            {13, 60000000},
+            {12, 40000000},
+            {11, 30000000},
+            {10, 22000000},
+            {9, 14000000},
+            {8, 10000000},
+            {7, 6000000},
+            {6, 3000000},
+            {5, 2000000},
+            {4, 1000000},
+            {3, 600000},
+            {2, 400000},
+            {1, 200000}
+    };
     TextView questionNumberText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -276,50 +293,64 @@ public class BasicQuiz extends AppCompatActivity {
     }
 
     private void handleAnswerClick(View v, String selectedAnswer) {
-        // Kiểm tra câu trả lời đúng hay sai
-        if (selectedAnswer.equals(questionItems.get(currentQuestion).getCorrect())) {
-            correct++;
-            v.setBackgroundResource(R.color.green);
+        // Đổi màu đáp án được chọn thành màu xám/tạm thời
+        v.setBackgroundColor(Color.parseColor("#FFA500"));
+        if (v instanceof TextView) {
+            ((TextView) v).setTextColor(Color.BLACK);
+        }
 
-            // Cộng số tiền thưởng vào tổng số tiền
-            int reward = getRewardForQuestion(currentQuestion);
-            totalMoney = reward;
+        // Delay 1s để hiển thị đáp án người chọn, sau đó xử lý tiếp
+        new Handler().postDelayed(() -> {
+            String correctAnswer = questionItems.get(currentQuestion).getCorrect();
 
-            // Cập nhật TextView hiển thị số tiền
-            TextView tvMoney = findViewById(R.id.currentMoney);
-            tvMoney.setText(formatMoney(totalMoney));
+            // Nếu đúng
+            if (selectedAnswer.equals(correctAnswer)) {
+                correct++;
+                v.setBackgroundResource(R.color.green);
 
-            if (currentQuestion < questionItems.size() - 1) {
-                Handler handler = new Handler();
-                handler.postDelayed(() -> {
-                    currentQuestion++;
-                    setQuestionScreen(currentQuestion);
-                }, 500);
+                int reward = getRewardForQuestion(currentQuestion);
+                totalMoney = reward;
+
+                TextView tvMoney = findViewById(R.id.currentMoney);
+                tvMoney.setText(formatMoney(totalMoney));
+
+                if (currentQuestion < questionItems.size() - 1) {
+                    new Handler().postDelayed(() -> {
+                        currentQuestion++;
+                        setQuestionScreen(currentQuestion);
+                    }, 500);
+                } else {
+                    new Handler().postDelayed(() -> {
+                        Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
+                        intent.putExtra("correct", correct);
+                        intent.putExtra("wrong", wrong);
+                        intent.putExtra("totalMoney", totalMoney);
+                        startActivity(intent);
+                        finish();
+                    }, 500);
+                }
             } else {
-                // Nếu là câu cuối cùng và trả lời đúng
-                new Handler().postDelayed(() -> {
-                    Intent intent = new Intent(BasicQuiz.this, ResultActivity.class);
-                    intent.putExtra("correct", correct);
-                    intent.putExtra("wrong", wrong);
-                    intent.putExtra("totalMoney", totalMoney);
-                    startActivity(intent);
-                    finish();
-                }, 500);
+                wrong++;
+                v.setBackgroundResource(R.color.red); // Đáp án chọn sai
+
+                // Cập nhật số tiền theo mốc an toàn đã vượt qua
+                totalMoney = getSafeMoney(currentQuestion - 1); // -1 vì vừa trả lời sai
+
+                TextView tvMoney = findViewById(R.id.currentMoney);
+                tvMoney.setText(formatMoney(totalMoney));
+
+                showCorrectAnswerAndFinish(); // sẽ delay thêm 1s ở trong hàm này
             }
-        } else {
-            wrong++;
-            v.setBackgroundResource(R.color.red);
-
-            // Nếu trả lời sai, hiển thị đáp án đúng rồi kết thúc
-            showCorrectAnswerAndFinish();
-        }
-
-        // Kiểm tra xem v có phải là Button không và nếu có thì cast nó
-        if (v instanceof Button) {
-            Button button = (Button) v;
-            button.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
-        }
+        }, 1500);
     }
+    private int getSafeMoney(int questionIndex) {
+        // Các mốc an toàn: câu 5, 10, 15 tương ứng index: 4, 9, 14
+        if (questionIndex >= 14) return 150000000; // câu 15 đúng
+        else if (questionIndex >= 9) return 22000000; // đến câu 10
+        else if (questionIndex >= 4) return 2000000; // đến câu 5
+        else return 0; // chưa qua mốc nào
+    }
+
 
     private void loadHardQuestions(DatabaseReference dbRef) {
         dbRef.child("hardquestion").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -435,56 +466,48 @@ public class BasicQuiz extends AppCompatActivity {
 //    phần thưởng
 // Trong Activity/Fragment của bạn
     private void showRewardTable() {
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.reward_table);
-
-        // Lấy dữ liệu tiền thưởng (có thể thay bằng dữ liệu thực)
-        int[][] rewards = {
-                {15, 150000000},
-                {14, 85000000},
-                {13, 60000000},
-                {12, 40000000},
-                {11, 30000000},
-                {10, 22000000},
-                {9, 14000000},
-                {8, 10000000},
-                {7, 6000000},
-                {6, 3000000},
-                {5, 2000000},
-                {4, 1000000},
-                {3, 600000},
-                {2, 400000},
-                {1, 200000}
-        };
-
+    final Dialog dialog = new Dialog(this);
+    dialog.setContentView(R.layout.reward_table);
     TableLayout table = dialog.findViewById(R.id.reward_table);
 
     // Thêm tiêu đề
-        TableRow headerRow = new TableRow(this);
-        addTableCell(headerRow, "Câu hỏi", true);
-        addTableCell(headerRow, "Tiền thưởng", true);
-        table.addView(headerRow);
+    TableRow headerRow = new TableRow(this);
+    addTableCell(headerRow, "Câu hỏi", true);
+    addTableCell(headerRow, "Tiền thưởng", true);
+    table.addView(headerRow);
 
-        // Thêm các hàng dữ liệu
-        for (int i = 0; i < rewards.length; i++) {
-            TableRow row = new TableRow(this);
+    for (int i = 0; i < rewards.length; i++) {
+        TableRow row = new TableRow(this);
 
-            // Highlight dòng hiện tại (currentQuestion + 1 vì index bắt đầu từ 0)
-            if ((rewards.length - i) == currentQuestion + 1) {
-                row.setBackgroundColor(Color.parseColor("#FFD700")); // Màu vàng
-            } else if (i % 2 == 0) {
-                row.setBackgroundColor(Color.parseColor("#F5F5F5")); // Màu xám nhạt
-            } else {
-                row.setBackgroundColor(Color.WHITE);
-            }
+        int questionNumber = rewards[i][0];
+        int displayIndex = rewards.length - i; // 15 → 1
 
-            addTableCell(row, String.valueOf(rewards[i][0]), false);
-            addTableCell(row, formatMoney(rewards[i][1]), false);
-            table.addView(row);
+        // ✅ Nếu là mốc hiện tại → tô đậm nền cam
+        if (displayIndex == currentQuestion + 1) {
+            row.setBackgroundColor(Color.parseColor("#FFA500")); // Màu cam
+        }
+        // ✅ Nếu là mốc 15 và đã đạt đến → tô xanh
+        else if (questionNumber == 15 && currentQuestion == 14) {
+            row.setBackgroundColor(Color.parseColor("#32CD32")); // Màu xanh lá
+        }
+        // ✅ Nếu là mốc an toàn (5, 10, 15) → tô vàng
+        else if (questionNumber == 5 || questionNumber == 10 || questionNumber == 15) {
+            row.setBackgroundColor(Color.parseColor("#FFFACD")); // Màu vàng nhạt (LemonChiffon)
+        }
+        // Các dòng xen kẽ màu xám trắng
+        else if (i % 2 == 0) {
+            row.setBackgroundColor(Color.parseColor("#F5F5F5")); // Xám nhạt
+        } else {
+            row.setBackgroundColor(Color.WHITE);
         }
 
-        dialog.show();
+        addTableCell(row, String.valueOf(questionNumber), false);
+        addTableCell(row, formatMoney(rewards[i][1]), false);
+        table.addView(row);
     }
+
+    dialog.show();
+}
 
     private void addTableCell(TableRow row, String text, boolean isHeader) {
         TextView textView = new TextView(this);
@@ -513,24 +536,6 @@ public class BasicQuiz extends AppCompatActivity {
         return String.format("%,d", amount) + " VND";
     }
     private int getRewardForQuestion(int questionIndex) {
-        int[][] rewards = {
-                {15, 150000000},
-                {14, 85000000},
-                {13, 60000000},
-                {12, 40000000},
-                {11, 30000000},
-                {10, 22000000},
-                {9, 14000000},
-                {8, 10000000},
-                {7, 6000000},
-                {6, 3000000},
-                {5, 2000000},
-                {4, 1000000},
-                {3, 600000},
-                {2, 400000},
-                {1, 200000}
-        };
-
         // Tính toán chỉ số trong bảng phần thưởng (15 câu hỏi, index bắt đầu từ 0)
         int rewardIndex = 15 - (questionIndex + 1); // Cộng 1 vì questionIndex bắt đầu từ 0
 
@@ -563,11 +568,8 @@ public class BasicQuiz extends AppCompatActivity {
             intent.putExtra("totalMoney", totalMoney);
             startActivity(intent);
             finish();
-        }, 1000);
+        }, 1500);
     }
-
-
-
 
 
     @Override
