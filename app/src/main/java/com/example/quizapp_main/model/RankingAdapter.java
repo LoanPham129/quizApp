@@ -26,7 +26,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         Collections.sort(this.playerList, new Comparator<Player>() {
             @Override
             public int compare(Player p1, Player p2) {
-                return Integer.compare(p2.getQuestionNumber(), p1.getQuestionNumber());
+                return Integer.compare(p2.getMoney(), p1.getMoney());
             }
         });
     }
