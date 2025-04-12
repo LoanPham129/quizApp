@@ -568,30 +568,6 @@ public class BasicQuiz extends AppCompatActivity {
         findViewById(R.id.help_call).setEnabled(enabled);
         findViewById(R.id.help_call).setAlpha(enabled ? 1.0f : 0.5f);
     }
-    private void updateHighScoreInFirebase(int newHighScore) {
-        String userId = PrefHelper.getUserId(this);
-        if (userId == null || userId.isEmpty()) return;
-
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
-
-        userRef.child("highScore").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Integer currentHighScore = snapshot.getValue(Integer.class);
-                if (currentHighScore == null || newHighScore > currentHighScore) {
-                    // Chỉ cập nhật nếu điểm mới cao hơn
-                    userRef.child("highScore").setValue(newHighScore)
-                            .addOnSuccessListener(aVoid -> Log.d("Firebase", "HighScore updated"))
-                            .addOnFailureListener(e -> Log.e("Firebase", "Update failed", e));
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("Firebase", "Failed to read highScore", error.toException());
-            }
-        });
-    }
     @Override
     protected void onPause() {
         super.onPause();

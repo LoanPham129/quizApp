@@ -39,6 +39,7 @@ import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -106,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
         });
         rankingCard.setOnClickListener(v -> {
             if (!isRankingVisible) {
-                // Hiển thị bảng xếp hạng và tải dữ liệu
+                // Hiển thị bảng xếp hạng và LẮNG NGHE REAL-TIME
                 dbRef.orderByChild("questionNumber")
-                        .limitToFirst(5)
-                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                        .limitToLast(5)
+                        .addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 List<Player> topPlayers = new ArrayList<>();
@@ -118,10 +119,12 @@ public class MainActivity extends AppCompatActivity {
                                     topPlayers.add(player);
                                 }
 
+                                Collections.reverse(topPlayers);
+
                                 RankingAdapter adapter = new RankingAdapter(topPlayers);
                                 rankingRecyclerView.setAdapter(adapter);
                                 rankingRecyclerView.setVisibility(View.VISIBLE);
-                                rankingRecyclerView.animate().alpha(1f).setDuration(300); // Hiệu ứng hiện
+                                rankingRecyclerView.animate().alpha(1f).setDuration(300);
                                 isRankingVisible = true;
                             }
 
@@ -131,13 +134,13 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
             } else {
-                // Ẩn bảng xếp hạng với hiệu ứng
+                // Ẩn bảng xếp hạng và NGỪNG LẮNG NGHE để tiết kiệm tài nguyên
                 rankingRecyclerView.animate()
                         .alpha(0f)
                         .setDuration(300)
                         .withEndAction(() -> {
                             rankingRecyclerView.setVisibility(View.GONE);
-                            isRankingVisible = false; // Chỉ cập nhật trạng thái SAU khi ẩn xong
+                            isRankingVisible = false;
                         });
             }
         });

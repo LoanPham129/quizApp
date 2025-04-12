@@ -3,7 +3,7 @@
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#0D318E"
+    android:background="@color/defaultRow"
     android:padding="16dp"
     android:gravity="center_horizontal">
 
@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Khán giả bình chọn"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_marginBottom="24dp"/>
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0%"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 android:gravity="center" />
 
@@ -46,13 +46,13 @@
                 android:id="@+id/barA"
                 android:layout_width="40dp"
                 android:layout_height="0dp"
-                android:background="#FFFF00" />
+                android:background="@color/yellow"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="A"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:layout_marginTop="4dp"
                 android:gravity="center"/>
         </LinearLayout>
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0%"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 android:gravity="center" />
 
@@ -78,13 +78,13 @@
                 android:id="@+id/barB"
                 android:layout_width="40dp"
                 android:layout_height="0dp"
-                android:background="#FFFF00" />
+                android:background="@color/yellow" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="B"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:layout_marginTop="4dp"
                 android:gravity="center"/>
         </LinearLayout>
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0%"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 android:gravity="center" />
 
@@ -109,13 +109,13 @@
                 android:id="@+id/barC"
                 android:layout_width="40dp"
                 android:layout_height="0dp"
-                android:background="#FFFF00" />
+                android:background="@color/yellow" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="C"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:layout_marginTop="4dp"
                 android:gravity="center"/>
         </LinearLayout>
@@ -132,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0%"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 android:gravity="center" />
 
@@ -140,13 +140,13 @@
                 android:id="@+id/barD"
                 android:layout_width="40dp"
                 android:layout_height="0dp"
-                android:background="#FFFF00" />
+                android:background="@color/yellow" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="D"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:layout_marginTop="4dp"
                 android:gravity="center"/>
         </LinearLayout>

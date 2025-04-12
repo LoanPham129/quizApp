@@ -33,57 +33,56 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Nguyen Van A"
-            android:textColor="#333333"
+            android:textColor="#000000"
             android:textSize="14sp"
             android:ellipsize="end"
             android:maxLines="1"
             android:layout_marginEnd="8dp"/>
 
-        <!-- Số câu hỏi (có thêm đơn vị "câu") -->
         <!-- Số câu hỏi -->
         <LinearLayout
             android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end">
-
-        <TextView
-            android:id="@+id/rankQuestionNumber"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10"
-            android:textColor="#FF6F00"
-            android:textSize="14sp"/>
+            android:orientation="horizontal"
+            android:gravity="end">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/rankQuestionNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="#FF6F00"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" câu"
+                android:textColor="#808080"
+            android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Số tiền -->
+        <LinearLayout
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:text=" câu"
-            android:textColor="#666666"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/rankMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50,000"
+                android:textColor="#4CAF50"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" VND"
+                android:textColor="#808080"
             android:textSize="14sp"/>
-    </LinearLayout>
-
-    <!-- Số tiền -->
-    <LinearLayout
-        android:layout_width="130dp"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="end">
-
-    <TextView
-        android:id="@+id/rankMoney"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="50,000"
-        android:textColor="#4CAF50"
-        android:textSize="14sp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" VND"
-        android:textColor="#666666"
-        android:textSize="14sp"/>
-</LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

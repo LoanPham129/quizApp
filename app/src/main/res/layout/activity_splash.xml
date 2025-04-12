@@ -20,7 +20,7 @@
             android:layout_height="100dp"/>
 
         <TextView
-            android:textColor="@color/text_color"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:textSize="20sp"
