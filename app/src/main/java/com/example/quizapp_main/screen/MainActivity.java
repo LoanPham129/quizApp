@@ -45,9 +45,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     TextView userGreeting;
-    ImageView userIcon;
+    ImageView userIcon, volumeToggle;
     DatabaseReference dbRef;
-    ImageView volumeToggle;
     private boolean isRankingVisible = false;
     MaterialCardView easyCard, exitCard,rankingCard;
     SoundManager soundManager;

@@ -46,7 +46,7 @@ import android.graphics.drawable.ColorDrawable;
 
 public class BasicQuiz extends AppCompatActivity {
 
-    TextView quiztext, Aans, Bans, Cans, Dans;
+    TextView quiztext, Aans, Bans, Cans, Dans, questionNumberText, currentMoney;
     SoundManager soundManager;
     List<QuestionItem> questionItems;
     int currentQuestion = 0;
@@ -70,7 +70,6 @@ public class BasicQuiz extends AppCompatActivity {
             {2, 400000},
             {1, 200000}
     };
-    TextView questionNumberText, currentMoney;
     ProgressBar loadingSpinner;
     LinearLayout quizContainer, helpButtonsContainer;
     Button quitButton;

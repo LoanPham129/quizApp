@@ -23,7 +23,7 @@ import java.util.Map;
 public class ResultActivity extends AppCompatActivity {
     SoundManager soundManager;
     MaterialCardView home, playAgain;
-    TextView resultInfo, resultMoney;
+    TextView resultMoney;
     DatabaseReference databaseRef;
 
     @Override

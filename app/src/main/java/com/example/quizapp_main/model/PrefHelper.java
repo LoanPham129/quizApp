@@ -71,9 +71,4 @@ public class PrefHelper {
                 .apply();
     }
 
-    // Lấy số câu hỏi đã trả lời từ SharedPreferences
-    public static int getQuestionNumber(Context context) {
-        return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-                .getInt("question_number", 0); // Mặc định là 0 nếu chưa lưu
-    }
 }
